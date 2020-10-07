@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Server_threaded.dir/most_of_c_server/server.c.o  -o Server_threaded 

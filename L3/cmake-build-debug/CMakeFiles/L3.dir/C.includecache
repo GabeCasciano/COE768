@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabriel/Documents/COE768/L3/client.c
+stdio.h
+-
+
+/home/gabriel/Documents/COE768/L3/server.c
+stdio.h
+-
+sys/socket.h
+-
+pthread.h
+-
+

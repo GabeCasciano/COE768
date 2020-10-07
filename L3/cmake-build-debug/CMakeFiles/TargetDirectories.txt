@@ -1,0 +1,5 @@
+/home/gabriel/Documents/COE768/L3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/gabriel/Documents/COE768/L3/cmake-build-debug/CMakeFiles/Server_threaded.dir
+/home/gabriel/Documents/COE768/L3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gabriel/Documents/COE768/L3/cmake-build-debug/CMakeFiles/Server.dir
+/home/gabriel/Documents/COE768/L3/cmake-build-debug/CMakeFiles/Client.dir

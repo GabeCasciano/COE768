@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/L3.dir/server.c.o CMakeFiles/L3.dir/client.c.o  -o L3 -pthread 
