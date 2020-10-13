@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabriel/Documents/COE768/L4_1/client.c
+stdio.h
+-
+netdb.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+common.h
+/home/gabriel/Documents/COE768/L4_1/common.h
+
+/home/gabriel/Documents/COE768/L4_1/common.h
+stdint.h
+-
+string.h
+-
+
