@@ -121,6 +121,14 @@
 		<Unit filename="/home/gabriel/Documents/COE768/L4_1/client.c">
 			<Option target="Client"/>
 		</Unit>
+		<Unit filename="/home/gabriel/Documents/COE768/L4_1/headers.h">
+			<Option target="Server"/>
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/gabriel/Documents/COE768/L4_1/networking.h">
+			<Option target="Server"/>
+			<Option target="Client"/>
+		</Unit>
 		<Unit filename="/home/gabriel/Documents/COE768/L4_1/server.c">
 			<Option target="Server"/>
 		</Unit>

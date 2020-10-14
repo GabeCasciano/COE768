@@ -6,22 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/gabriel/Documents/COE768/L4_1/client.c
-stdio.h
--
-sys/types.h
--
-stdlib.h
--
-unistd.h
--
-string.h
--
-headers.h
-/home/gabriel/Documents/COE768/L4_1/headers.h
-networking.h
-/home/gabriel/Documents/COE768/L4_1/networking.h
-
 /home/gabriel/Documents/COE768/L4_1/headers.h
 stdint.h
 -
@@ -41,4 +25,24 @@ sys/types.h
 -
 string.h
 -
+
+/home/gabriel/Documents/COE768/L4_1/server.c
+stdint.h
+-
+stdio.h
+-
+sys/types.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+sys/stat.h
+-
+headers.h
+/home/gabriel/Documents/COE768/L4_1/headers.h
+networking.h
+/home/gabriel/Documents/COE768/L4_1/networking.h
 

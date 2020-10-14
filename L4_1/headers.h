@@ -2,8 +2,8 @@
 // Created by gabriel on 2020-10-13.
 //
 
-#ifndef L4_1_COMMON_H
-#define L4_1_COMMON_H
+#ifndef L4_1_HEADERS_H
+#define L4_1_HEADERS_H
 
 #define MAX_LEN 128
 
@@ -23,12 +23,12 @@ struct file_header{
 
 struct command_packet{
     /*
-     * 1. send msg
-     * 2. req file
-     * 4. send'ing file
-     * 5. recv'ing file
-     * 6. recv complete
-     * 66. close connection
+     * 1. send msg (both)
+     * 2. req file (both)
+     * 3. send'ing file (cli -> server)
+     * 4. recv'ing file (server -> cli)
+     * 5. recv complete (both)
+     * 66. close connection (client)
      */
     uint8_t id;
     char *data;
@@ -39,7 +39,7 @@ struct command_packet{
 struct command_packet command_pack(uint8_t id, char data[]){
     struct command_packet new_packet;
     new_packet.id = id;
-    new_packet.data = (char*)malloc(sizeof(data));
+    new_packet.data = (char*)malloc(strlen(data));
     strcpy(&new_packet.data, &data);
 
     return new_packet;
@@ -49,7 +49,7 @@ struct file_header file_header_pack(uint8_t id, uint32_t size, char file_name[])
     struct file_header new_header;
     new_header.id = id;
     new_header.size = size;
-    new_header.name = (char*)malloc(file_name);
+    new_header.name = (char*)malloc(strlen(file_name));
     strcpy(&new_header.name, &file_name);
     return new_header;
 
@@ -95,4 +95,4 @@ char* file_header_to_serial(struct file_header header){
     return new_str;
 }
 
-#endif //L4_1_COMMON_H
+#endif //L4_1_HEADERS_H

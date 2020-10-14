@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabriel/Documents/COE768/L4_2/test.c
+string.h
+-
+sys/types.h
+-
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+math.h
+-
+

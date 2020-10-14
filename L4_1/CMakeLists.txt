@@ -3,5 +3,5 @@ project(L4_1 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Server server.c)
-add_executable(Client client.c)
+add_executable(Server server.c headers.h networking.h)
+add_executable(Client client.c headers.h networking.h)
