@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define IP "127.0.0.1"
+#define IP "3.21.129.10"
 #define PORT 8080
 #define BUFFER_LEN 100
 
@@ -18,7 +18,7 @@ int main() {
     struct sockaddr_in server_addr;
     char buffer[BUFFER_LEN];
 
-    sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
 
     bzero((char *)&server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
@@ -29,13 +29,16 @@ int main() {
     printf("Enter a message \n");
     fgets(buffer, BUFFER_LEN, stdin);
 
-    if(sendto(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
+    if(connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
+        printf("????");
+
+    if(write(sock, buffer, BUFFER_LEN) == -1)
         printf("????");
 
     bzero(buffer, BUFFER_LEN);
     int recv_len;
 
-    recv_len = recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&server_addr, sizeof(server_addr));
+    recv_len = read(sock, buffer, BUFFER_LEN);
 
 
     printf("Received from %s, %d Bytes \n", inet_ntoa(server_addr.sin_addr), recv_len);

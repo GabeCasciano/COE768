@@ -14,6 +14,7 @@
 int main() {
 
     int sock;
+    socklen_t client_addr_len;
     struct sockaddr_in server_addr, client_addr;
     char buffer[BUFFER_LEN];
 
@@ -24,11 +25,13 @@ int main() {
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     server_addr.sin_port = htons(PORT);
 
-    sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
     bind(sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
 
     int recv_len;
-    recv_len = recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&client_addr,  sizeof(client_addr));
+    client_addr_len = sizeof(client_addr);
+    recv_len = recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&client_addr,  &client_addr_len);
+
     printf("Received from %s %d Bytes \n", inet_ntoa(client_addr.sin_addr), recv_len);
     printf("Buffer: %s \n", buffer);
 
@@ -37,7 +40,7 @@ int main() {
 
     printf("Responding to client: %s", resp);
 
-    sendto(sock, resp, sizeof(resp), 0, (struct sockaddr *)&client_addr, sizeof(client_addr));
+    sendto(sock, resp, sizeof(resp), 0, (struct sockaddr *)&client_addr, client_addr_len);
 
     bzero(buffer, BUFFER_LEN);
     if(recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&client_addr, sizeof(client_addr)) == -1)
