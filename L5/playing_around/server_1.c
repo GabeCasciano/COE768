@@ -31,7 +31,7 @@ int main() {
     int recv_len;
     client_addr_len = sizeof(client_addr);
     recv_len = recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&client_addr,  &client_addr_len);
-
+0-
     printf("Received from %s %d Bytes \n", inet_ntoa(client_addr.sin_addr), recv_len);
     printf("Buffer: %s \n", buffer);
 
@@ -41,12 +41,7 @@ int main() {
     printf("Responding to client: %s", resp);
 
     sendto(sock, resp, sizeof(resp), 0, (struct sockaddr *)&client_addr, client_addr_len);
-
-    bzero(buffer, BUFFER_LEN);
-    if(recvfrom(sock, buffer, BUFFER_LEN, 0, (struct sockaddr *)&client_addr, sizeof(client_addr)) == -1)
-        printf("????");
-
-    close(sock);
+     close(sock);
 
     return 0;
 }

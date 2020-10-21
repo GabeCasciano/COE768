@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Test.dir/playing_around/test.c.o  -o Test 

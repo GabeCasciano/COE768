@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+</head>
+<body>
+Hello this a second test page that is going to be used to test the file transfer capabilities of our server.
+
+This allows us to test transferring files with different files extensions, which  shouldn't really be an issue.
+</body>
+</html>

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/gabe/Documents/School/COE768/L5/main.c" "/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Server.dir/main.c.o"
+  "/home/gabe/Documents/School/COE768/L5/server.c" "/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Server.dir/server.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

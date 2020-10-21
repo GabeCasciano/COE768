@@ -77,27 +77,27 @@ include CMakeFiles/Server.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Server.dir/flags.make
 
-CMakeFiles/Server.dir/main.c.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Server.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/main.c.o   -c /home/gabe/Documents/School/COE768/L5/main.c
+CMakeFiles/Server.dir/server.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/server.c.o: ../server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Server.dir/server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/server.c.o   -c /home/gabe/Documents/School/COE768/L5/server.c
 
-CMakeFiles/Server.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/L5/main.c > CMakeFiles/Server.dir/main.c.i
+CMakeFiles/Server.dir/server.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/server.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/L5/server.c > CMakeFiles/Server.dir/server.c.i
 
-CMakeFiles/Server.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/L5/main.c -o CMakeFiles/Server.dir/main.c.s
+CMakeFiles/Server.dir/server.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/server.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/L5/server.c -o CMakeFiles/Server.dir/server.c.s
 
 # Object files for target Server
 Server_OBJECTS = \
-"CMakeFiles/Server.dir/main.c.o"
+"CMakeFiles/Server.dir/server.c.o"
 
 # External object files for target Server
 Server_EXTERNAL_OBJECTS =
 
-Server: CMakeFiles/Server.dir/main.c.o
+Server: CMakeFiles/Server.dir/server.c.o
 Server: CMakeFiles/Server.dir/build.make
 Server: CMakeFiles/Server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Server"

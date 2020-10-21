@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define IP "3.21.129.10"
+#define IP "127.0.0.1"
 #define PORT 8080
 #define BUFFER_LEN 100
 

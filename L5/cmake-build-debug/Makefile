@@ -76,17 +76,6 @@ CMAKE_BINARY_DIR = /home/gabe/Documents/School/COE768/L5/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -97,6 +86,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Client
+# Target rules for targets named Test
 
 # Build rule for target.
-Client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Client
-.PHONY : Client
+Test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Test
+.PHONY : Test
 
 # fast build rule for target.
-Client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
-.PHONY : Client/fast
+Test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
+.PHONY : Test/fast
 
 #=============================================================================
 # Target rules for targets named Server
@@ -156,59 +156,179 @@ Server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
 
-cli.o: cli.c.o
+#=============================================================================
+# Target rules for targets named Server_old
 
-.PHONY : cli.o
+# Build rule for target.
+Server_old: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Server_old
+.PHONY : Server_old
+
+# fast build rule for target.
+Server_old/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/build
+.PHONY : Server_old/fast
+
+#=============================================================================
+# Target rules for targets named Client
+
+# Build rule for target.
+Client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Client
+.PHONY : Client
+
+# fast build rule for target.
+Client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+.PHONY : Client/fast
+
+#=============================================================================
+# Target rules for targets named Client_old
+
+# Build rule for target.
+Client_old: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Client_old
+.PHONY : Client_old
+
+# fast build rule for target.
+Client_old/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/build
+.PHONY : Client_old/fast
+
+client.o: client.c.o
+
+.PHONY : client.o
 
 # target to build an object file
-cli.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/cli.c.o
-.PHONY : cli.c.o
+client.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client.c.o
+.PHONY : client.c.o
 
-cli.i: cli.c.i
+client.i: client.c.i
 
-.PHONY : cli.i
+.PHONY : client.i
 
 # target to preprocess a source file
-cli.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/cli.c.i
-.PHONY : cli.c.i
+client.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client.c.i
+.PHONY : client.c.i
 
-cli.s: cli.c.s
+client.s: client.c.s
 
-.PHONY : cli.s
+.PHONY : client.s
 
 # target to generate assembly for a file
-cli.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/cli.c.s
-.PHONY : cli.c.s
+client.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client.c.s
+.PHONY : client.c.s
 
-main.o: main.c.o
+playing_around/client_1.o: playing_around/client_1.c.o
 
-.PHONY : main.o
+.PHONY : playing_around/client_1.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.o
-.PHONY : main.c.o
+playing_around/client_1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/playing_around/client_1.c.o
+.PHONY : playing_around/client_1.c.o
 
-main.i: main.c.i
+playing_around/client_1.i: playing_around/client_1.c.i
 
-.PHONY : main.i
+.PHONY : playing_around/client_1.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.i
-.PHONY : main.c.i
+playing_around/client_1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/playing_around/client_1.c.i
+.PHONY : playing_around/client_1.c.i
 
-main.s: main.c.s
+playing_around/client_1.s: playing_around/client_1.c.s
 
-.PHONY : main.s
+.PHONY : playing_around/client_1.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.s
-.PHONY : main.c.s
+playing_around/client_1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/playing_around/client_1.c.s
+.PHONY : playing_around/client_1.c.s
+
+playing_around/server_1.o: playing_around/server_1.c.o
+
+.PHONY : playing_around/server_1.o
+
+# target to build an object file
+playing_around/server_1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/playing_around/server_1.c.o
+.PHONY : playing_around/server_1.c.o
+
+playing_around/server_1.i: playing_around/server_1.c.i
+
+.PHONY : playing_around/server_1.i
+
+# target to preprocess a source file
+playing_around/server_1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/playing_around/server_1.c.i
+.PHONY : playing_around/server_1.c.i
+
+playing_around/server_1.s: playing_around/server_1.c.s
+
+.PHONY : playing_around/server_1.s
+
+# target to generate assembly for a file
+playing_around/server_1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/playing_around/server_1.c.s
+.PHONY : playing_around/server_1.c.s
+
+playing_around/test.o: playing_around/test.c.o
+
+.PHONY : playing_around/test.o
+
+# target to build an object file
+playing_around/test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/playing_around/test.c.o
+.PHONY : playing_around/test.c.o
+
+playing_around/test.i: playing_around/test.c.i
+
+.PHONY : playing_around/test.i
+
+# target to preprocess a source file
+playing_around/test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/playing_around/test.c.i
+.PHONY : playing_around/test.c.i
+
+playing_around/test.s: playing_around/test.c.s
+
+.PHONY : playing_around/test.s
+
+# target to generate assembly for a file
+playing_around/test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/playing_around/test.c.s
+.PHONY : playing_around/test.c.s
+
+server.o: server.c.o
+
+.PHONY : server.o
+
+# target to build an object file
+server.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server.c.o
+.PHONY : server.c.o
+
+server.i: server.c.i
+
+.PHONY : server.i
+
+# target to preprocess a source file
+server.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server.c.i
+.PHONY : server.c.i
+
+server.s: server.c.s
+
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server.c.s
+.PHONY : server.c.s
 
 # Help Target
 help:
@@ -219,13 +339,25 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Client"
+	@echo "... Client_old"
 	@echo "... Server"
-	@echo "... cli.o"
-	@echo "... cli.i"
-	@echo "... cli.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Server_old"
+	@echo "... Test"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... playing_around/client_1.o"
+	@echo "... playing_around/client_1.i"
+	@echo "... playing_around/client_1.s"
+	@echo "... playing_around/server_1.o"
+	@echo "... playing_around/server_1.i"
+	@echo "... playing_around/server_1.s"
+	@echo "... playing_around/test.o"
+	@echo "... playing_around/test.i"
+	@echo "... playing_around/test.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 .PHONY : help
 
 

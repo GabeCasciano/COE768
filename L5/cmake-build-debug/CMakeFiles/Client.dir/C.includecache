@@ -6,23 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/gabe/Documents/School/COE768/L5/cli.c
-netdb.h
+/home/gabe/Documents/School/COE768/L5/client.c
+common.h
+/home/gabe/Documents/School/COE768/L5/common.h
+
+/home/gabe/Documents/School/COE768/L5/common.h
+stdlib.h
+-
+stdio.h
+-
+string.h
 -
 sys/socket.h
+-
+sys/types.h
+-
+sys/stat.h
 -
 netinet/in.h
 -
 arpa/inet.h
 -
-sys/types.h
--
-stdio.h
--
-stdlib.h
--
 unistd.h
--
-string.h
 -
 

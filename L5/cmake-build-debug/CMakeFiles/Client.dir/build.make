@@ -77,27 +77,27 @@ include CMakeFiles/Client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Client.dir/flags.make
 
-CMakeFiles/Client.dir/cli.c.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/cli.c.o: ../cli.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Client.dir/cli.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Client.dir/cli.c.o   -c /home/gabe/Documents/School/COE768/L5/cli.c
+CMakeFiles/Client.dir/client.c.o: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/client.c.o: ../client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Client.dir/client.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Client.dir/client.c.o   -c /home/gabe/Documents/School/COE768/L5/client.c
 
-CMakeFiles/Client.dir/cli.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Client.dir/cli.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/L5/cli.c > CMakeFiles/Client.dir/cli.c.i
+CMakeFiles/Client.dir/client.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Client.dir/client.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/L5/client.c > CMakeFiles/Client.dir/client.c.i
 
-CMakeFiles/Client.dir/cli.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Client.dir/cli.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/L5/cli.c -o CMakeFiles/Client.dir/cli.c.s
+CMakeFiles/Client.dir/client.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Client.dir/client.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/L5/client.c -o CMakeFiles/Client.dir/client.c.s
 
 # Object files for target Client
 Client_OBJECTS = \
-"CMakeFiles/Client.dir/cli.c.o"
+"CMakeFiles/Client.dir/client.c.o"
 
 # External object files for target Client
 Client_EXTERNAL_OBJECTS =
 
-Client: CMakeFiles/Client.dir/cli.c.o
+Client: CMakeFiles/Client.dir/client.c.o
 Client: CMakeFiles/Client.dir/build.make
 Client: CMakeFiles/Client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Client"

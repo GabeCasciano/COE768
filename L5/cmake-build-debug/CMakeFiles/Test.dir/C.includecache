@@ -9,24 +9,12 @@
 /home/gabe/Documents/School/COE768/L5/common.h
 stdlib.h
 -
-stdio.h
--
 string.h
 -
-sys/socket.h
--
-sys/types.h
--
-sys/stat.h
--
-netinet/in.h
--
-arpa/inet.h
--
-unistd.h
--
 
-/home/gabe/Documents/School/COE768/L5/server.c
+/home/gabe/Documents/School/COE768/L5/test.c
 common.h
 /home/gabe/Documents/School/COE768/L5/common.h
+stdio.h
+-
 

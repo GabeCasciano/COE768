@@ -73,8 +73,11 @@ CMAKE_BINARY_DIR = /home/gabe/Documents/School/COE768/L5/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Client.dir/all
+all: CMakeFiles/Test.dir/all
 all: CMakeFiles/Server.dir/all
+all: CMakeFiles/Server_old.dir/all
+all: CMakeFiles/Client.dir/all
+all: CMakeFiles/Client_old.dir/all
 
 .PHONY : all
 
@@ -84,10 +87,94 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Client.dir/clean
+clean: CMakeFiles/Test.dir/clean
 clean: CMakeFiles/Server.dir/clean
+clean: CMakeFiles/Server_old.dir/clean
+clean: CMakeFiles/Client.dir/clean
+clean: CMakeFiles/Client_old.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Test.dir
+
+# All Build rule for target.
+CMakeFiles/Test.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target Test"
+.PHONY : CMakeFiles/Test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/Test.dir/rule
+
+# Convenience name for target.
+Test: CMakeFiles/Test.dir/rule
+
+.PHONY : Test
+
+# clean rule for target.
+CMakeFiles/Test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/clean
+.PHONY : CMakeFiles/Test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Server.dir
+
+# All Build rule for target.
+CMakeFiles/Server.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target Server"
+.PHONY : CMakeFiles/Server.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/Server.dir/rule
+
+# Convenience name for target.
+Server: CMakeFiles/Server.dir/rule
+
+.PHONY : Server
+
+# clean rule for target.
+CMakeFiles/Server.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
+.PHONY : CMakeFiles/Server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Server_old.dir
+
+# All Build rule for target.
+CMakeFiles/Server_old.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target Server_old"
+.PHONY : CMakeFiles/Server_old.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Server_old.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server_old.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/Server_old.dir/rule
+
+# Convenience name for target.
+Server_old: CMakeFiles/Server_old.dir/rule
+
+.PHONY : Server_old
+
+# clean rule for target.
+CMakeFiles/Server_old.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server_old.dir/build.make CMakeFiles/Server_old.dir/clean
+.PHONY : CMakeFiles/Server_old.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Client.dir
@@ -117,31 +204,31 @@ CMakeFiles/Client.dir/clean:
 .PHONY : CMakeFiles/Client.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Server.dir
+# Target rules for target CMakeFiles/Client_old.dir
 
 # All Build rule for target.
-CMakeFiles/Server.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target Server"
-.PHONY : CMakeFiles/Server.dir/all
+CMakeFiles/Client_old.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target Client_old"
+.PHONY : CMakeFiles/Client_old.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Server.dir/rule: cmake_check_build_system
+CMakeFiles/Client_old.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Client_old.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/Server.dir/rule
+.PHONY : CMakeFiles/Client_old.dir/rule
 
 # Convenience name for target.
-Server: CMakeFiles/Server.dir/rule
+Client_old: CMakeFiles/Client_old.dir/rule
 
-.PHONY : Server
+.PHONY : Client_old
 
 # clean rule for target.
-CMakeFiles/Server.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
-.PHONY : CMakeFiles/Server.dir/clean
+CMakeFiles/Client_old.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client_old.dir/build.make CMakeFiles/Client_old.dir/clean
+.PHONY : CMakeFiles/Client_old.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,4 +1,7 @@
-/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Client.dir
 /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Test.dir
 /home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Server.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Server_old.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Client.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug/CMakeFiles/Client_old.dir
