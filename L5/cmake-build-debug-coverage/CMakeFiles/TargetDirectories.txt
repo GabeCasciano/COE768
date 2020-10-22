@@ -1,0 +1,7 @@
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/Test.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/Server.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/Server_old.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/Client.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
+/home/gabe/Documents/School/COE768/L5/cmake-build-debug-coverage/CMakeFiles/Client_old.dir

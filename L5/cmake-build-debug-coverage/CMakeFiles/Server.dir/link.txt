@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage -g   CMakeFiles/Server.dir/server.c.o  -o Server 

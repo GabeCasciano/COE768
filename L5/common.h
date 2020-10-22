@@ -58,14 +58,15 @@ struct packed_t strpack(char * src, int len){
 }
 
 char * serialized(struct pdu_t pdu, char * dest){
-    dest = (char *)realloc(dest, strlen(pdu.data)  + 2);
+    //if( strlen(pdu.data) + 2 > strlen(dest))
+     //   dest = (char *)malloc(strlen(pdu.data)  + 2);
+
     bzero(dest, sizeof(pdu.data) + 2);
 
-    dest[0] = pdu.type;
+    sprintf(dest, "%c", pdu.type);
     strcat(dest, ",");
     strcat(dest, pdu.data);
 
-    dest = strdup(dest);
     return dest;
 }
 
@@ -88,6 +89,7 @@ struct sock_t{
 
 struct sock_t init_client(char* host, int port){
     struct sock_t sock;
+
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
     sock.sockaddr_len = sizeof(sock.sockaddr);
 
@@ -103,6 +105,7 @@ struct sock_t init_client(char* host, int port){
 
 struct sock_t init_server(int port){
     struct sock_t sock;
+
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
     sock.sockaddr_len = sizeof(sock.sockaddr);
 
@@ -119,13 +122,17 @@ struct sock_t init_server(int port){
 //  --  FILE OPS  --
 
 int filesize(char * filename){
+    char _filename[strlen(filename)];
     char cwd[256];
-    bzero(cwd, 256);
-
     struct stat st;
+
+    bzero(&_filename, strlen(filename));
+    bzero(&cwd, 256);
+
+    strcpy(&_filename, filename);
     getcwd(cwd, sizeof(cwd));
     strcat(cwd, "/tmp/");
-    strcat(cwd, filename);
+    strcat(cwd, _filename);
 
     if(stat(cwd, &st) != -1)
         return st.st_size;
@@ -136,37 +143,38 @@ int filesize(char * filename){
 
 char * file_to_string(char * filename, char * dest, int size){
     char cwd[256];
+    char _filename[strlen(filename)];
     FILE * fptr;
 
-    dest = (char *)malloc(size);
-
-    bzero(cwd, 256);
+    bzero(&_filename, strlen(filename));
+    bzero(&cwd, 256);
     bzero(dest, size);
 
+    strcpy(&_filename, filename);
     getcwd(cwd, sizeof(cwd));
     strcat(cwd, "/tmp/");
-    strcat(cwd, filename);
+    strcat(cwd, _filename);
 
     fptr = fopen(cwd, "r");
     if(fptr != NULL)
         fread(dest, 1, size, fptr);
 
     fclose(fptr);
-    free(fptr);
     return dest;
 }
 
 void string_to_file(char * filename, char * src){
-    char cwd[256];
+    //char cwd[256];
+    char * _filename = strdup(filename);
     FILE * fptr;
 
-    bzero(cwd, 256);
-
+    /*
     getcwd(cwd, sizeof(cwd));
     strcat(cwd, "/");
-    strcat(cwd, filename);
+    strcat(cwd, _filename);
+    */
 
-    fptr = fopen(cwd, "w");
+    fptr = fopen(_filename, "w");
     if(fptr != NULL)
         fwrite(src, 1, strlen(src), fptr);
 

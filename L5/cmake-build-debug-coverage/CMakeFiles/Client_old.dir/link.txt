@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage -g   CMakeFiles/Client_old.dir/playing_around/client_1.c.o  -o Client_old 

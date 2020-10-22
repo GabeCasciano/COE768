@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage -g   CMakeFiles/Server_old.dir/playing_around/server_1.c.o  -o Server_old 

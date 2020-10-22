@@ -4,25 +4,26 @@
 #define PORT 8080
 
 void sendAck(struct sock_t server){
-    char * buffer;
+    char buff[PDU_DATA_LEN + 2];
     struct pdu_t pdu;
-    buffer = (char *)malloc(PDU_DATA_LEN + 2);
 
+    pdu.data = "";
     pdu.type = PDU_TYPE_ACK;
+
     bzero(pdu.data, strlen(pdu.data));
-    bzero(buffer, strlen(buffer));
-    buffer = serialized(pdu, buffer);
-    write(server.sockfd, buffer, strlen(buffer));
+
+    serialized(pdu, buff);
+    write(server.sockfd, buff, strlen(buff));
 }
 
 int main(int argc, char** argv){
 
     struct sock_t server;
     struct pdu_t pdu;
-    FILE * fptr;
     int port = PORT, recv_len;
     char * host = HOST;
     char * buffer, * file;
+    char filename[50];
 
     switch (argc) {
         case 2:
@@ -35,12 +36,14 @@ int main(int argc, char** argv){
             break;
     }
 
-    pdu.data = (char *)malloc(PDU_DATA_LEN + 2);
-    buffer = (char *)malloc(strlen(pdu.data));
+    pdu.data = (char *)malloc(PDU_DATA_LEN );
+    buffer = (char *)malloc(PDU_DATA_LEN + 2);
 
     // get a file name
     printf("Enter a filename \n");
-    scanf("%s", pdu.data);
+    scanf("%s", filename);
+
+    strcpy(pdu.data, filename);
 
     if(pdu.data != NULL){
         // request file from server
@@ -58,7 +61,7 @@ int main(int argc, char** argv){
 
         if(pdu.type == PDU_TYPE_FILENAME){
             // prepare location
-            //file = (char *) malloc(atoi(pdu.data) + 1);
+            file = (char *) malloc(atoi(pdu.data)); // this is causing a abrt
 
             // send ack
             sendAck(server);
@@ -73,24 +76,24 @@ int main(int argc, char** argv){
                 pdu = unserialized(buffer, &pdu);
 
                 if(pdu.type == PDU_TYPE_DATA){
-                    strcat(file, buffer);
+                    strcat(file, pdu.data);
                     sendAck(server);
 
-                }else // error or final
+
+                }else { // error or final
+                    if (file != NULL)
+                        string_to_file(filename, file);
+                    free(file);
                     break;
-
+                }
             }
-
         }
 
     } else{
 
     }
 
-    free(host);
     free(buffer);
-    free(file);
-    free(fptr);
     close(server.sockfd);
 
 
