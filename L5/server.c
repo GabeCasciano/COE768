@@ -99,7 +99,6 @@ int main(int argc, char** argv){
                 }
             } else {
                 send_error(server, client);
-                run = 0;
             }
 
             //send final
