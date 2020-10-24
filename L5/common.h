@@ -135,7 +135,7 @@ int filesize(char * filename){
     strcat(cwd, _filename);
 
     if(stat(cwd, &st) != -1)
-        return st.st_size;
+        return st.st_blksize;
     return -1;
 
 }
@@ -166,13 +166,11 @@ char * file_to_string(char * filename, char * dest, int size){
 void string_to_file(char * filename, char * src){
     //char cwd[256];
     char * _filename = strdup(filename);
-    FILE * fptr;
-
-    fptr = fopen(_filename, "w");
+    FILE * fptr = fopen("small.txt", "w");
     if(fptr != NULL)
-        fprintf(fptr, src);
-
+        fprintf(fptr, "%s", src);
     fclose(fptr);
+
 
 }
 

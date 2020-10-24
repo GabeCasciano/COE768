@@ -10,4 +10,4 @@ add_executable(Client client.c common.h)
 add_executable(Client_old playing_around/client_1.c)
 add_executable(Test playing_around/test.c common.h)
 
-set_target_properties(Client PROPERTIES LINK_FLAGS -Wall --stack 1048576)
+set_target_properties(Client PROPERTIES LINK_FLAGS -W --stack 1048576)

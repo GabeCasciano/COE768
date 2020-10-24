@@ -46,7 +46,7 @@ int main(int argc, char** argv){
 
         strcpy(pdu.data, filename);
 
-        if (pdu.data != NULL) {
+        if (pdu.data != NULL && strcmp(pdu.data, "exit") != 1) {
             // request file from server
             pdu.type = PDU_TYPE_FILENAME;
             server = init_client(host, port);
@@ -80,7 +80,7 @@ int main(int argc, char** argv){
 
                     } else { // error or final
                         if (file != NULL)
-                            string_to_file(filename, file);
+                            string_to_file(&filename, file);
                         break;
                     }
                 }
@@ -89,7 +89,7 @@ int main(int argc, char** argv){
                 free(file);
             close(server.sockfd);
 
-        } else if (pdu.data == "exit")
+        } else
             run = 0;
     }
 
