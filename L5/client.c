@@ -78,11 +78,9 @@ int main(int argc, char** argv){
                         strcat(file, pdu.data);
                         sendAck(server);
 
-
                     } else { // error or final
                         if (file != NULL)
                             string_to_file(filename, file);
-                        free(file);
                         break;
                     }
                 }

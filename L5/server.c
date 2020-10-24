@@ -40,69 +40,78 @@ int main(int argc, char** argv){
     pdu.data = malloc(PDU_DATA_LEN + 2);
 
     buffer = malloc(PDU_DATA_LEN + 2);
-    recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *)&client.sockaddr, &client.sockaddr_len);
-    pdu = unserialized(buffer, &pdu);
 
-    if(pdu.type == PDU_TYPE_FILENAME){
-        // get filesize
-        char * filename;
-        char * file;
+    while(run) {
+        recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *) &client.sockaddr,
+                            &client.sockaddr_len);
+        pdu = unserialized(buffer, &pdu);
 
-        filename = malloc(strlen(pdu.data));
+        if (pdu.type == PDU_TYPE_FILENAME) {
+            // get filesize
+            char *filename;
+            char *file;
 
-        strcpy(filename, pdu.data);
-        bzero(pdu.data, strlen(pdu.data));
+            filename = malloc(strlen(pdu.data));
 
-        if(filesize(filename) > 0) { // check if file actually exists
-            sprintf(pdu.data, "%d", filesize(filename));
-            // send filesize
-            buffer = serialized(pdu, buffer);
-            sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *) &client.sockaddr, client.sockaddr_len);
+            strcpy(filename, pdu.data);
+            bzero(pdu.data, strlen(pdu.data));
 
-            // wait for ack
-            buffer = (char *) realloc(buffer, PDU_DATA_LEN + 2);
-            bzero(buffer, strlen(buffer));
-            recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *) &client.sockaddr, &client.sockaddr_len);
-            pdu = unserialized(buffer, &pdu);
+            if (filesize(filename) > 0) { // check if file actually exists
+                sprintf(pdu.data, "%d", filesize(filename));
+                // send filesize
+                buffer = serialized(pdu, buffer);
+                sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *) &client.sockaddr,
+                       client.sockaddr_len);
 
-            if (pdu.type != PDU_TYPE_ACK) { // error
-                send_error(server, client);
+                // wait for ack
+                buffer = (char *) realloc(buffer, PDU_DATA_LEN + 2);
+                bzero(buffer, strlen(buffer));
+                recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *) &client.sockaddr,
+                                    &client.sockaddr_len);
+                pdu = unserialized(buffer, &pdu);
 
-            } else { // recv'd ack from client
+                if (pdu.type != PDU_TYPE_ACK) { // error
+                    send_error(server, client);
 
-                // pack
-                file = malloc(filesize(filename));
-                file = file_to_string(filename, file, filesize(filename));
-                packet = strpack(file, strlen(file));
+                } else { // recv'd ack from client
 
-                // send file
-                for (int i = 0; i < packet.num_packets; i++) {
-                    buffer = serialized(packet.pdu[i], buffer);
-                    sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *) &client.sockaddr,
-                           client.sockaddr_len);
+                    // pack
+                    file = malloc(filesize(filename));
+                    file = file_to_string(filename, file, filesize(filename));
+                    packet = strpack(file, strlen(file));
 
-                    buffer = (char *) realloc(buffer, PDU_DATA_LEN + 2);
-                    bzero(buffer, strlen(buffer));
-                    recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *) &client.sockaddr, &client.sockaddr_len);
-                    pdu = unserialized(buffer, &pdu);
+                    // send file
+                    for (int i = 0; i < packet.num_packets; i++) {
+                        buffer = serialized(packet.pdu[i], buffer);
+                        sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *) &client.sockaddr,
+                               client.sockaddr_len);
 
-                    if (pdu.type != PDU_TYPE_ACK) { // error
-                        send_error(server, client);
-                        break;
+                        buffer = (char *) realloc(buffer, PDU_DATA_LEN + 2);
+                        bzero(buffer, strlen(buffer));
+                        recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0,
+                                            (struct sockaddr *) &client.sockaddr, &client.sockaddr_len);
+                        pdu = unserialized(buffer, &pdu);
+
+                        if (pdu.type != PDU_TYPE_ACK) { // error
+                            send_error(server, client);
+                            break;
+                        }
                     }
                 }
+            } else {
+                send_error(server, client);
+                run = 0;
             }
-        } else{
+
+            //send final
+            send_final(server, client);
+            free(filename);
+            free(file);
+
+        } else { // send error and close connection
             send_error(server, client);
+            run = 0;
         }
-
-        //send final
-        send_final(server, client);
-        free(filename);
-        free(file);
-
-    } else{ // send error and close connection
-       send_error(server, client);
     }
 
     free(buffer);

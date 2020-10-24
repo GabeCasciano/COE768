@@ -168,15 +168,9 @@ void string_to_file(char * filename, char * src){
     char * _filename = strdup(filename);
     FILE * fptr;
 
-    /*
-    getcwd(cwd, sizeof(cwd));
-    strcat(cwd, "/");
-    strcat(cwd, _filename);
-    */
-
     fptr = fopen(_filename, "w");
     if(fptr != NULL)
-        fwrite(src, 1, strlen(src), fptr);
+        fprintf(fptr, src);
 
     fclose(fptr);
 
