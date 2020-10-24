@@ -2,24 +2,22 @@
 
 #define PORT 8080
 
-void send_error(struct sock_t server, struct sock_t client, struct pdu_t pdu){
-    char * buffer;
-    buffer = (char *)malloc(PDU_DATA_LEN + 2);
+void send_error(struct sock_t server, struct sock_t client){
+    struct pdu_t pdu;
+    char buffer[PDU_DATA_LEN + 2];
     pdu.type = PDU_TYPE_ERROR;
-    buffer = serialized(pdu, buffer);
-    sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *)&client.sockaddr, client.sockaddr_len);
-    free(buffer);
+    pdu.data = "";
+    strcpy(buffer, serialized(pdu, &buffer));
+    sendto(server.sockfd, &buffer, strlen(buffer), 0, (struct sockaddr *)&client.sockaddr, client.sockaddr_len);
 }
 
 void send_final(struct sock_t server, struct sock_t client){
     struct pdu_t pdu;
-    char * buffer;
-    buffer = (char *)malloc(PDU_DATA_LEN + 2);
+    char buffer[PDU_DATA_LEN + 2];
     pdu.type = PDU_TYPE_FINAL;
-    buffer = serialized(pdu, buffer);
-    sendto(server.sockfd, buffer, strlen(buffer), 0, (struct sockaddr *)&client.sockaddr, client.sockaddr_len);
-
-    free(buffer);
+    pdu.data = "";
+    strcpy(buffer, serialized(pdu, &buffer));
+    sendto(server.sockfd, &buffer, strlen(buffer), 0, (struct sockaddr *)&client.sockaddr, client.sockaddr_len);
 }
 
 int main(int argc, char** argv){
@@ -39,9 +37,9 @@ int main(int argc, char** argv){
 
     server = init_server(port);
     client.sockaddr_len = sizeof(client.sockaddr);
-    pdu.data = (char *)malloc(PDU_DATA_LEN + 2);
+    pdu.data = malloc(PDU_DATA_LEN + 2);
 
-    buffer = (char *)malloc(PDU_DATA_LEN + 2);
+    buffer = malloc(PDU_DATA_LEN + 2);
     recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *)&client.sockaddr, &client.sockaddr_len);
     pdu = unserialized(buffer, &pdu);
 
@@ -50,7 +48,7 @@ int main(int argc, char** argv){
         char * filename;
         char * file;
 
-        filename = (char *)malloc(strlen(pdu.data));
+        filename = malloc(strlen(pdu.data));
 
         strcpy(filename, pdu.data);
         bzero(pdu.data, strlen(pdu.data));
@@ -68,13 +66,12 @@ int main(int argc, char** argv){
             pdu = unserialized(buffer, &pdu);
 
             if (pdu.type != PDU_TYPE_ACK) { // error
-                bzero(pdu.data, strlen(pdu.data));
-                send_error(server, client, pdu);
+                send_error(server, client);
 
             } else { // recv'd ack from client
 
                 // pack
-                file = (char *)malloc(filesize(filename));
+                file = malloc(filesize(filename));
                 file = file_to_string(filename, file, filesize(filename));
                 packet = strpack(file, strlen(file));
 
@@ -90,15 +87,13 @@ int main(int argc, char** argv){
                     pdu = unserialized(buffer, &pdu);
 
                     if (pdu.type != PDU_TYPE_ACK) { // error
-                        pdu.type = PDU_TYPE_FINAL;
-                        bzero(pdu.data, strlen(pdu.data));
-                        send_error(server, client, pdu);
+                        send_error(server, client);
                         break;
                     }
                 }
             }
         } else{
-            send_error(server, client, pdu);
+            send_error(server, client);
         }
 
         //send final
@@ -107,7 +102,7 @@ int main(int argc, char** argv){
         free(file);
 
     } else{ // send error and close connection
-       send_error(server, client, pdu);
+       send_error(server, client);
     }
 
     free(buffer);
