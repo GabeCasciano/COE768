@@ -64,8 +64,7 @@ int main(int argc, char** argv){
                        client.sockaddr_len);
 
                 // wait for ack
-                buffer = (char *) realloc(buffer, PDU_DATA_LEN + 2);
-                bzero(buffer, strlen(buffer));
+                bzero(buffer, PDU_DATA_LEN + 2);
                 recv_len = recvfrom(server.sockfd, buffer, PDU_DATA_LEN + 2, 0, (struct sockaddr *) &client.sockaddr,
                                     &client.sockaddr_len);
                 pdu = unserialized(buffer, &pdu);

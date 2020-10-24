@@ -46,7 +46,7 @@ int main(int argc, char** argv){
 
         strcpy(pdu.data, filename);
 
-        if (pdu.data != NULL && strcmp(pdu.data, "exit") != 1) {
+        if (pdu.data != NULL && strcmp(pdu.data, "exit") >= 1) {
             // request file from server
             pdu.type = PDU_TYPE_FILENAME;
             server = init_client(host, port);

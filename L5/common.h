@@ -165,8 +165,7 @@ char * file_to_string(char * filename, char * dest, int size){
 
 void string_to_file(char * filename, char * src){
     //char cwd[256];
-    char * _filename = strdup(filename);
-    FILE * fptr = fopen("small.txt", "w");
+    FILE * fptr = fopen(filename, "w");
     if(fptr != NULL)
         fprintf(fptr, "%s", src);
     fclose(fptr);
