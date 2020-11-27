@@ -1,0 +1,52 @@
+Given:
+
+We are making a content sharing application, like a torrenting application.
+
+The application utilizes an index server which "indexes" all live content servers, and makes their addresses available for peers such that they can connect to each other for file download.
+
+
+Requirements:
+- clients will connect to the index server via UDP
+- clients will connect to each other via TCP
+- content available for download is listed by the index server
+- when a client downloads content, that content is now available for download by another client.
+	- index server should organize based on content, and then which servers have the specified content.
+
+
+PDU specification:
+R - Content Registration, Content Server -> Index server (size: 100)
+D - Content Download Request, Client -> Content Server (size:100)
+S - Search for content and associated server, Peer -> Index server
+T - Content De-Registration, Peer -> Index server
+C - Content Data, Peer -> Index Server
+O - List of active content, Peer -> Index server
+A - Ack
+E - Error
+
+Components:
+Index Server:
+	- Hosts available content
+	- Hosts available clients
+	- Multi-connection/Multi-threaded
+	
+Peer
+	Client:
+		- Communicates with index server
+		- Communicates with content client
+		- Only one connection at a time
+		
+	Content Server:
+		- send content list to index server
+		- send content to peer
+		- unlist content at index server
+
+
+Done:
+ - sending from download_client to index_server
+ - most functions have been tested
+
+To-Do:
+    - 1 send, 1 recv from client to server
+    - list some bs
+    - search some bs
+    - content_server hosting so search works proper

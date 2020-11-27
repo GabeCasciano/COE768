@@ -68,7 +68,7 @@ int main(int argc, char** argv){
                 sendAck(server);
 
                 // recv until F
-                while (pdu.type != PDU_TYPE_FINAL || pdu.type != PDU_TYPE_ERROR) {
+                do{
                     bzero(buffer, PDU_DATA_LEN+2);
 
                     recv_len = read(server.sockfd, buffer, PDU_DATA_LEN + 2);
@@ -78,12 +78,12 @@ int main(int argc, char** argv){
                         strcat(file, pdu.data);
                         sendAck(server);
 
-                    } else { // error or final
+                    } else if(pdu.data == PDU_TYPE_FINAL){ // error or final
                         if (file != NULL)
                             string_to_file(&filename, file);
                         break;
                     }
-                }
+                }while (pdu.type != PDU_TYPE_ERROR);
             }
             if(file != NULL)
                 free(file);

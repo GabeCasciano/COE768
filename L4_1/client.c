@@ -1,4 +1,4 @@
-// Gabriel Casciano, 500744076, L4
+g// Gabriel Casciano, 500744076, L4
 /*
  * Client process,
  * 1. Connect to server
