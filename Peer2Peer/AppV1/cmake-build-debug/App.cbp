@@ -27,50 +27,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Tests">
-				<Option output="/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tests"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Tests/fast">
-				<Option output="/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tests/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug"/>
 				<Option type="4"/>
@@ -126,31 +82,17 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/Client.h">
+			<Option target="App"/>
+		</Unit>
+		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/Index_Server.h">
+			<Option target="App"/>
+		</Unit>
 		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h">
-			<Option target="Tests"/>
-			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/content_server.c">
-			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/download_client.c">
-			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/file_manipulation.h">
-			<Option target="Tests"/>
-			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/index_server.c">
 			<Option target="App"/>
 		</Unit>
 		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/main.c">
 			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/network.h">
-			<Option target="App"/>
-		</Unit>
-		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/test.c">
-			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/gabe/Documents/School/COE768/Peer2Peer/App/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

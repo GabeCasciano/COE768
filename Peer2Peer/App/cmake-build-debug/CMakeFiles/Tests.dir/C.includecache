@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+math.h
+-
+ctype.h
+-
+sys/wait.h
+-
+sys/stat.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+netdb.h
+-
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/file_manipulation.h
+common.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+dirent.h
+-
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/test.c
+file_manipulation.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/file_manipulation.h
+

@@ -23,6 +23,43 @@ O - List of active content, Peer -> Index server
 A - Ack
 E - Error
 
+Error Codes:
+    1 : exit
+    2 : lost packet / failed last command
+    3 : could not find content
+
+PDU data format :
+
+(client to index_server):
+    R : port;addr;filename(25)
+    S : filename(25)
+    T : port;addr;filename(25)
+    D : filename(25)
+    O : " "
+    A : message(optional)
+    E : error_code(optional)
+
+(index_server to client):
+    R : (recv R return A or E)
+    S : port;addr;filename(25) or E (code 3)
+    T : (recv T return A or E)
+    O : (multi step recv)   1 - num_servers;
+                            2 - addr;port;num_packets
+                            n - 1 - packet_id;list( 4 list elements )
+                            last - go to 2 until total content list = num_servers
+    D : addr;port or E
+
+(client to download):
+    C : filename(25)
+    E : error_code(optional)
+    A : message(optional)
+
+(download to client):
+    C : (multi step recv)   1 - num_packets;
+                            2 - packet_id;content(max_len);
+    E : error_code(optional);
+    A : message(optional);
+
 Components:
 Index Server:
 	- Hosts available content

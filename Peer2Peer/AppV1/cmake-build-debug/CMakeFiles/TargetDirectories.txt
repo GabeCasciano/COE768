@@ -1,4 +1,3 @@
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/Tests.dir
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir

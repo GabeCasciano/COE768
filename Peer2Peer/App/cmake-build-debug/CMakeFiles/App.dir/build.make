@@ -90,17 +90,62 @@ CMakeFiles/App.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/App.dir/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/main.c -o CMakeFiles/App.dir/main.c.s
 
+CMakeFiles/App.dir/download_client.c.o: CMakeFiles/App.dir/flags.make
+CMakeFiles/App.dir/download_client.c.o: ../download_client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/App.dir/download_client.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/App.dir/download_client.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/download_client.c
+
+CMakeFiles/App.dir/download_client.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/App.dir/download_client.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/Peer2Peer/App/download_client.c > CMakeFiles/App.dir/download_client.c.i
+
+CMakeFiles/App.dir/download_client.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/App.dir/download_client.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/download_client.c -o CMakeFiles/App.dir/download_client.c.s
+
+CMakeFiles/App.dir/content_server.c.o: CMakeFiles/App.dir/flags.make
+CMakeFiles/App.dir/content_server.c.o: ../content_server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/App.dir/content_server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/App.dir/content_server.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/content_server.c
+
+CMakeFiles/App.dir/content_server.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/App.dir/content_server.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/Peer2Peer/App/content_server.c > CMakeFiles/App.dir/content_server.c.i
+
+CMakeFiles/App.dir/content_server.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/App.dir/content_server.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/content_server.c -o CMakeFiles/App.dir/content_server.c.s
+
+CMakeFiles/App.dir/index_server.c.o: CMakeFiles/App.dir/flags.make
+CMakeFiles/App.dir/index_server.c.o: ../index_server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/App.dir/index_server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/App.dir/index_server.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/index_server.c
+
+CMakeFiles/App.dir/index_server.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/App.dir/index_server.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/Peer2Peer/App/index_server.c > CMakeFiles/App.dir/index_server.c.i
+
+CMakeFiles/App.dir/index_server.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/App.dir/index_server.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/index_server.c -o CMakeFiles/App.dir/index_server.c.s
+
 # Object files for target App
 App_OBJECTS = \
-"CMakeFiles/App.dir/main.c.o"
+"CMakeFiles/App.dir/main.c.o" \
+"CMakeFiles/App.dir/download_client.c.o" \
+"CMakeFiles/App.dir/content_server.c.o" \
+"CMakeFiles/App.dir/index_server.c.o"
 
 # External object files for target App
 App_EXTERNAL_OBJECTS =
 
 App: CMakeFiles/App.dir/main.c.o
+App: CMakeFiles/App.dir/download_client.c.o
+App: CMakeFiles/App.dir/content_server.c.o
+App: CMakeFiles/App.dir/index_server.c.o
 App: CMakeFiles/App.dir/build.make
 App: CMakeFiles/App.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable App"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable App"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/App.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
