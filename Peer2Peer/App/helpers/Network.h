@@ -103,6 +103,8 @@ struct sock_t init_server_tcp(int port, int listen_size){
 
 struct sock_t init_client_udp(int port, char * host){
     struct sock_t sock;
+    struct timeval tv;
+    tv.tv_sec = 1;
 
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
 
@@ -113,6 +115,10 @@ struct sock_t init_client_udp(int port, char * host){
     inet_aton(host, &sock.sockaddr.sin_addr);
 
     sock.sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+
+//    if(setsockopt(sock.sockfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0)
+//        printf("Error 08: could not set timeout");
+
     connect(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
 
     return sock;

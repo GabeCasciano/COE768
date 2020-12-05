@@ -73,7 +73,7 @@ int remove_content(struct content_t * content, char * filename){
 int find_server_with_file(struct content_t * content, int len, char * filename){
     for(int i = 0; i < len; i++){
         if(content[i].num_files != 0) {
-            if(contains_content(&content[i], filename) > 0)
+            if(contains_content(&content[i], filename) >= 0)
                 return i;
         }
     }

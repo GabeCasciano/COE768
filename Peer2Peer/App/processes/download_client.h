@@ -29,7 +29,7 @@ void searching(struct sock_t * sock){
     read(sock->sockfd, buff, MAX_MSG_SIZE);
     unserialized(buff, &pdu);
 
-    char ** datas = unserialized_data(buff);
+    char ** datas = unserialized_data(pdu.data);
 
     if(pdu.type == PDU_SEARCH){
         printf("Server has file: %s, on download server %s at port %d\n", datas[0], datas[2], atoi(datas[1]));
@@ -50,7 +50,7 @@ void downloading_pt2(char * filename, char * addr,  int port){
     char * file;
     int num_packs = 0;
 
-    serialized(pdu, filename);
+    serialized(pdu, buff);
     write(server.sockfd, buff, MAX_MSG_SIZE);
     bzero(buff, MAX_MSG_SIZE);
     read(server.sockfd, buff, MAX_MSG_SIZE);
@@ -62,7 +62,8 @@ void downloading_pt2(char * filename, char * addr,  int port){
         file = (char *)malloc(MAX_MSG_SIZE * num_packs);
 
         pdu = init_pdu(PDU_ACK, " ");
-        serialized(pdu, filename);
+        bzero(buff, MAX_MSG_SIZE);
+        serialized(pdu, buff);
         write(server.sockfd, buff, MAX_MSG_SIZE);
 
         for(int i = 0; i < num_packs; i++){
@@ -74,12 +75,15 @@ void downloading_pt2(char * filename, char * addr,  int port){
         write_file(filename, file);
         printf("Successful download from %s\n", addr);
 
+
     }
 
     file = NULL;
     buff = NULL;
     free(file);
     free(buff);
+
+    close(server.sockfd);
 
 }
 
@@ -123,11 +127,14 @@ void download_client(){
     struct pdu_t pdu = init_pdu(PDU_ACK, " ");
 
     int running = 1;
-    char input_cmd;
+
 
     while (running){
+        char input_cmd;
+
         printf("Enter a command:\n");
         scanf("%c", &input_cmd);
+
 
         input_cmd = toupper(input_cmd);
 
@@ -141,13 +148,20 @@ void download_client(){
             downloading_pt1(&sock);
         }
         else if(input_cmd == CMD_EXIT){
+            printf("Exiting...\n");
             running = 0;
+            close(sock.sockfd);
         }
         else{ // help
-
+            printf("Welcome to GTOR\n\n");
+            printf("    - H -> help window\n");
+            printf("    - S -> search command, enter a file to be\nsearched for on the index sever\n");
+            printf("    - D -> download command, enter a file to be\ndownloaded from a download server\n");
+            printf("    - L -> list command, request a list of files from the index server\n");
         }
 
-
+        input_cmd = NULL;
+        getchar();
     }
 }
 

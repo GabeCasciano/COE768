@@ -20,9 +20,9 @@
 #define PDU_CONTENT 'C'
 #define PDU_LIST 'O'
 
-#define ERR_EXIT -1
-#define ERR_RESEND -2
-#define ERR_NOFILE -3
+#define ERR_EXIT 1
+#define ERR_RESEND 2
+#define ERR_NOFILE 3
 
 #define MAX_ELEMENTS_PER_DATA 5
 #define MAX_DATA_LEN 100

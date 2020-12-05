@@ -58,6 +58,53 @@ void do_unregistration(struct sock_t sock){
     }
 }
 
+void do_file_transfer(){
+    struct sock_t server = init_server_tcp(DOWNLOAD_PORT, 1);
+    struct sock_t client;
+    struct pdu_t pdu = init_pdu(PDU_ACK, " ");
+
+    char * buff = (char *)malloc(MAX_MSG_SIZE);
+    char * file;
+
+    client.sockfd = accept(server.sockfd, (struct sockaddr *)&client.sockaddr, (socklen_t *)&client.sockaddr_len);
+    bzero(buff, MAX_MSG_SIZE);
+    read(client.sockfd, buff, MAX_MSG_SIZE);
+    unserialized(buff, &pdu);
+
+    if(file_in_cwd(pdu.data)){
+        int size = filesize(pdu.data);
+        file = (char *)malloc(size);
+        read_file(pdu.data, file, size);
+
+        struct packet_t packs = init_packet(MAX_DATA_LEN, file, strlen(file));
+        pdu = init_pdu(PDU_CONTENT, packs.length + '0');
+        bzero(buff, MAX_MSG_SIZE);
+        serialized(pdu, buff);
+
+        write(client.sockfd, buff, MAX_MSG_SIZE);
+        bzero(buff, MAX_MSG_SIZE);
+        read(client.sockfd, buff, MAX_MSG_SIZE);
+        unserialized(buff, &pdu);
+
+        if(pdu.type == PDU_ACK){
+            for(int i = 0; i < packs.length; i++){
+                bzero(buff, MAX_MSG_SIZE);
+                serialized(packs.pdus[i], buff);
+                write(client.sockfd, buff, MAX_MSG_SIZE);
+            }
+        }
+
+    }
+
+    buff = NULL;
+    file = NULL;
+    free(buff);
+    free(file);
+    close(client.sockfd);
+    close(server.sockfd);
+
+}
+
 void download_server(){
     struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
     char * buff = (char *)malloc(MAX_MSG_SIZE);
@@ -68,7 +115,7 @@ void download_server(){
     do_registration(sock);
 
     while (running){
-
+        do_file_transfer();
     }
 
     do_unregistration(sock);

@@ -67,12 +67,11 @@ void do_search(struct pdu_t pdu, struct sock_t * server, struct sock_t * client)
 
         strcpy(datas[0], pdu.data);
         sprintf(datas[1], "%d", DOWNLOAD_PORT);
-        strcpy(datas[2], client->addr);
+        strcpy(datas[2], content[index].addr);
 
         bzero(buff, MAX_MSG_SIZE);
         buff = serialized_data(datas, 3);
         send_pdu = init_pdu(PDU_SEARCH, buff);
-        bzero(buff, MAX_MSG_SIZE);
         serialized(send_pdu, buff);
     }
     else{
