@@ -59,10 +59,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -90,7 +90,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -131,19 +131,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Tests
-
-# Build rule for target.
-Tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests
-.PHONY : Tests
-
-# fast build rule for target.
-Tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
-.PHONY : Tests/fast
-
-#=============================================================================
 # Target rules for targets named App
 
 # Build rule for target.
@@ -156,86 +143,31 @@ App/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/build
 .PHONY : App/fast
 
-content_server.o: content_server.c.o
+#=============================================================================
+# Target rules for targets named File_test
 
-.PHONY : content_server.o
+# Build rule for target.
+File_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 File_test
+.PHONY : File_test
 
-# target to build an object file
-content_server.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/content_server.c.o
-.PHONY : content_server.c.o
+# fast build rule for target.
+File_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/File_test.dir/build.make CMakeFiles/File_test.dir/build
+.PHONY : File_test/fast
 
-content_server.i: content_server.c.i
+#=============================================================================
+# Target rules for targets named Content_test
 
-.PHONY : content_server.i
+# Build rule for target.
+Content_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Content_test
+.PHONY : Content_test
 
-# target to preprocess a source file
-content_server.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/content_server.c.i
-.PHONY : content_server.c.i
-
-content_server.s: content_server.c.s
-
-.PHONY : content_server.s
-
-# target to generate assembly for a file
-content_server.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/content_server.c.s
-.PHONY : content_server.c.s
-
-download_client.o: download_client.c.o
-
-.PHONY : download_client.o
-
-# target to build an object file
-download_client.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/download_client.c.o
-.PHONY : download_client.c.o
-
-download_client.i: download_client.c.i
-
-.PHONY : download_client.i
-
-# target to preprocess a source file
-download_client.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/download_client.c.i
-.PHONY : download_client.c.i
-
-download_client.s: download_client.c.s
-
-.PHONY : download_client.s
-
-# target to generate assembly for a file
-download_client.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/download_client.c.s
-.PHONY : download_client.c.s
-
-index_server.o: index_server.c.o
-
-.PHONY : index_server.o
-
-# target to build an object file
-index_server.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/index_server.c.o
-.PHONY : index_server.c.o
-
-index_server.i: index_server.c.i
-
-.PHONY : index_server.i
-
-# target to preprocess a source file
-index_server.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/index_server.c.i
-.PHONY : index_server.c.i
-
-index_server.s: index_server.c.s
-
-.PHONY : index_server.s
-
-# target to generate assembly for a file
-index_server.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/index_server.c.s
-.PHONY : index_server.c.s
+# fast build rule for target.
+Content_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Content_test.dir/build.make CMakeFiles/Content_test.dir/build
+.PHONY : Content_test/fast
 
 main.o: main.c.o
 
@@ -264,32 +196,59 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/main.c.s
 .PHONY : main.c.s
 
-test.o: test.c.o
+tests/content_test.o: tests/content_test.c.o
 
-.PHONY : test.o
+.PHONY : tests/content_test.o
 
 # target to build an object file
-test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.c.o
-.PHONY : test.c.o
+tests/content_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Content_test.dir/build.make CMakeFiles/Content_test.dir/tests/content_test.c.o
+.PHONY : tests/content_test.c.o
 
-test.i: test.c.i
+tests/content_test.i: tests/content_test.c.i
 
-.PHONY : test.i
+.PHONY : tests/content_test.i
 
 # target to preprocess a source file
-test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.c.i
-.PHONY : test.c.i
+tests/content_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Content_test.dir/build.make CMakeFiles/Content_test.dir/tests/content_test.c.i
+.PHONY : tests/content_test.c.i
 
-test.s: test.c.s
+tests/content_test.s: tests/content_test.c.s
 
-.PHONY : test.s
+.PHONY : tests/content_test.s
 
 # target to generate assembly for a file
-test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.c.s
-.PHONY : test.c.s
+tests/content_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Content_test.dir/build.make CMakeFiles/Content_test.dir/tests/content_test.c.s
+.PHONY : tests/content_test.c.s
+
+tests/file_test.o: tests/file_test.c.o
+
+.PHONY : tests/file_test.o
+
+# target to build an object file
+tests/file_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/File_test.dir/build.make CMakeFiles/File_test.dir/tests/file_test.c.o
+.PHONY : tests/file_test.c.o
+
+tests/file_test.i: tests/file_test.c.i
+
+.PHONY : tests/file_test.i
+
+# target to preprocess a source file
+tests/file_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/File_test.dir/build.make CMakeFiles/File_test.dir/tests/file_test.c.i
+.PHONY : tests/file_test.c.i
+
+tests/file_test.s: tests/file_test.c.s
+
+.PHONY : tests/file_test.s
+
+# target to generate assembly for a file
+tests/file_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/File_test.dir/build.make CMakeFiles/File_test.dir/tests/file_test.c.s
+.PHONY : tests/file_test.c.s
 
 # Help Target
 help:
@@ -300,22 +259,17 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... App"
-	@echo "... Tests"
-	@echo "... content_server.o"
-	@echo "... content_server.i"
-	@echo "... content_server.s"
-	@echo "... download_client.o"
-	@echo "... download_client.i"
-	@echo "... download_client.s"
-	@echo "... index_server.o"
-	@echo "... index_server.i"
-	@echo "... index_server.s"
+	@echo "... Content_test"
+	@echo "... File_test"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... tests/content_test.o"
+	@echo "... tests/content_test.i"
+	@echo "... tests/content_test.s"
+	@echo "... tests/file_test.o"
+	@echo "... tests/file_test.i"
+	@echo "... tests/file_test.s"
 .PHONY : help
 
 

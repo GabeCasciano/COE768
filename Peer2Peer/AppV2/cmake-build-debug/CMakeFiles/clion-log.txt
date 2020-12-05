@@ -1,0 +1,18 @@
+/home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/gabe/Documents/School/COE768/Peer2Peer/App
+-- The CXX compiler identification is unknown
+CMake Error at CMakeLists.txt:1 (project):
+  The CMAKE_CXX_COMPILER:
+
+    /usr/bin/c++
+
+  is not a full path to an existing compiler tool.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeError.log".
+Cannot read /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/3.17.3/CMakeCXXCompiler.cmake

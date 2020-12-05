@@ -1,4 +1,4 @@
-# Install script for directory: /home/gabe/Documents/School/COE768/Peer2Peer/App
+# Install script for directory: /home/gabe/Documents/School/COE768/Peer2Peer/AppV2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

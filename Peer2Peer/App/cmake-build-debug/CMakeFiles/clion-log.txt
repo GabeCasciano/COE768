@@ -1,4 +1,4 @@
-/home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/gabe/Documents/School/COE768/Peer2Peer/App
+/home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/gabe/Documents/School/COE768/Peer2Peer/App
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug

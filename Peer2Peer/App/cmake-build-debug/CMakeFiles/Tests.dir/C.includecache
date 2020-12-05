@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Content.h
 stdio.h
 -
 stdlib.h
@@ -15,13 +15,29 @@ unistd.h
 -
 string.h
 -
-math.h
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Files.h
+stdio.h
 -
-ctype.h
+stdlib.h
 -
-sys/wait.h
+unistd.h
+-
+string.h
 -
 sys/stat.h
+-
+dirent.h
+-
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Network.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
 -
 sys/socket.h
 -
@@ -32,13 +48,29 @@ arpa/inet.h
 netdb.h
 -
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/file_manipulation.h
-common.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
-dirent.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/PDUs.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+math.h
 -
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/test.c
-file_manipulation.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/file_manipulation.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+Network.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Network.h
+Files.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Files.h
+PDUs.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/PDUs.h
+Content.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/Content.h
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/tests/file_test.c
+../common.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
 

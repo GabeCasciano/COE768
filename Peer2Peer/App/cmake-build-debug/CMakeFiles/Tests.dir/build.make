@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/gabe/Programs/Clion/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -77,27 +77,27 @@ include CMakeFiles/Tests.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Tests.dir/flags.make
 
-CMakeFiles/Tests.dir/test.c.o: CMakeFiles/Tests.dir/flags.make
-CMakeFiles/Tests.dir/test.c.o: ../test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Tests.dir/test.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Tests.dir/test.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/test.c
+CMakeFiles/Tests.dir/tests/file_test.c.o: CMakeFiles/Tests.dir/flags.make
+CMakeFiles/Tests.dir/tests/file_test.c.o: ../tests/file_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Tests.dir/tests/file_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Tests.dir/tests/file_test.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/tests/file_test.c
 
-CMakeFiles/Tests.dir/test.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Tests.dir/test.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/Peer2Peer/App/test.c > CMakeFiles/Tests.dir/test.c.i
+CMakeFiles/Tests.dir/tests/file_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Tests.dir/tests/file_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabe/Documents/School/COE768/Peer2Peer/App/tests/file_test.c > CMakeFiles/Tests.dir/tests/file_test.c.i
 
-CMakeFiles/Tests.dir/test.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Tests.dir/test.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/test.c -o CMakeFiles/Tests.dir/test.c.s
+CMakeFiles/Tests.dir/tests/file_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Tests.dir/tests/file_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabe/Documents/School/COE768/Peer2Peer/App/tests/file_test.c -o CMakeFiles/Tests.dir/tests/file_test.c.s
 
 # Object files for target Tests
 Tests_OBJECTS = \
-"CMakeFiles/Tests.dir/test.c.o"
+"CMakeFiles/Tests.dir/tests/file_test.c.o"
 
 # External object files for target Tests
 Tests_EXTERNAL_OBJECTS =
 
-Tests: CMakeFiles/Tests.dir/test.c.o
+Tests: CMakeFiles/Tests.dir/tests/file_test.c.o
 Tests: CMakeFiles/Tests.dir/build.make
 Tests: CMakeFiles/Tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Tests"

@@ -23,7 +23,7 @@ int main(){
 //    struct cwd_t cwd = read_cwd();
 //
 //    printf("\n %s", cwd.files[3]);
-//    printf("\n %d", file_in_cwd("App.cbp"));
+//    printf("\n %d", file_in_cwd("AppV2.cbp"));
 
 
 

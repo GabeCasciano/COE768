@@ -1,4 +1,7 @@
+cmake_minimum_required(VERSION 3.17)
 project(App)
 
-add_executable(App main.c common.h network.h file_manipulation.h download_client.c content_server.c index_server.c)
-add_executable(Tests test.c common.h file_manipulation.h)
+execute_process(COMMAND cmake-build-debug/delete.sh)
+add_executable(App main.c common.h )
+add_executable(File_test tests/file_test.c common.h)
+add_executable(Content_test tests/content_test.c common.h) 

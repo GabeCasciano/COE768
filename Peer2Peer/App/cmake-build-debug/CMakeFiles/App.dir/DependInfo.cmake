@@ -4,9 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/gabe/Documents/School/COE768/Peer2Peer/App/content_server.c" "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir/content_server.c.o"
-  "/home/gabe/Documents/School/COE768/Peer2Peer/App/download_client.c" "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir/download_client.c.o"
-  "/home/gabe/Documents/School/COE768/Peer2Peer/App/index_server.c" "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir/index_server.c.o"
   "/home/gabe/Documents/School/COE768/Peer2Peer/App/main.c" "/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
