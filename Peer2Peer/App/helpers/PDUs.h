@@ -71,25 +71,23 @@ struct pdu_t unserialized(char * cereal, struct pdu_t * pdu){
 
 char ** unserialized_data(char * data){
     char ** datas = (char **)malloc(MAX_ELEMENTS_PER_DATA);
-    char holder = strtok(data, ";");
+    char * holder = strtok(data, ";");
     for( int i = 0; i < MAX_ELEMENTS_PER_DATA; i++) {
         if(holder != NULL) {
-            datas[i] = (char *) malloc(strlen(holder));
+            datas[i] = (char *) malloc(MAX_FILENAME_LEN);
             strcpy(datas[i], holder);
             holder = strtok(NULL, ";");
         }
+        else
+            break;
     }
     return datas;
 }
 
-char * serialized_data(char ** data){
-    int len = 0;
-    for(int i = 0; i < MAX_ELEMENTS_PER_DATA; i++){
-        if(data[i] != NULL)
-            len += strlen(data[i]);
-    }
-    char * output = (char *)malloc(len + MAX_ELEMENTS_PER_DATA);
-    for(int i = 0; i < MAX_ELEMENTS_PER_DATA; i++){
+char * serialized_data(char ** data, int size){
+
+    char * output = (char *)malloc(MAX_FILENAME_LEN * size);
+    for(int i = 0; i < size; i++){
         if(data[i] != NULL) {
             strcat(output, data[i]);
         }
