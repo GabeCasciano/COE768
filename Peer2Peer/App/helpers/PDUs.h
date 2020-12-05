@@ -19,11 +19,14 @@
 #define PDU_DEREGISTER 'T'
 #define PDU_CONTENT 'C'
 #define PDU_LIST 'O'
-#define PDU_WHOIS 'W'
+
+#define ERR_EXIT -1
+#define ERR_RESEND -2
+#define ERR_NOFILE -3
 
 #define MAX_ELEMENTS_PER_DATA 5
 #define MAX_DATA_LEN 100
-#define MAX_MSG_SIZE 101
+#define MAX_MSG_SIZE 102
 
 struct pdu_t {
     char type;
@@ -41,7 +44,7 @@ struct pdu_t init_pdu(const char type, char * data){
 
     pdu.type = type;
 
-    if(type != PDU_ACK){
+    if(data != NULL){
         pdu.data = (char *)malloc(data_length);
         strcpy(pdu.data, data);
     }
@@ -52,7 +55,7 @@ struct pdu_t init_pdu(const char type, char * data){
 char * serialized(struct pdu_t pdu, char * dest){
     sprintf(dest, "%c", pdu.type);
     strcat(dest, ",");
-    strcat(dest, pdu.data);
+    strncat(dest, pdu.data, MAX_DATA_LEN);
 
     return dest;
 }

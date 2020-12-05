@@ -1,5 +1,9 @@
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/FORK_test.dir
+/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/UDP_test.dir
+/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/TCP_test.dir
+/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/App.dir
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/File_test.dir
 /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/Content_test.dir
+/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/PDU_test.dir

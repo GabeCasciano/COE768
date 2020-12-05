@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/FORK_test.dir/tests/fork_test.c.o  -o FORK_test 

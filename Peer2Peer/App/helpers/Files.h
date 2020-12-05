@@ -50,7 +50,7 @@ void write_file(char * filename, char * data){
 
 }
 
-char * read_file(char * filename, char * dest){
+char * read_file(char * filename, char * dest, int size){
     char * cwd = (char *)malloc(256);
     FILE * fptr;
 
@@ -60,10 +60,11 @@ char * read_file(char * filename, char * dest){
     int file_size = filesize(filename);
 
     fptr = fopen(cwd, "r");
-    if(fptr != NULL)
-        fread(dest, 1, file_size , fptr);
+    if(fptr != NULL) {
+        fread(dest, 1, size, fptr);
+        fclose(fptr);
+    }
 
-    fclose(fptr);
     return dest;
 }
 

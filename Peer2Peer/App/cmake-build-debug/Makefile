@@ -131,6 +131,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named FORK_test
+
+# Build rule for target.
+FORK_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FORK_test
+.PHONY : FORK_test
+
+# fast build rule for target.
+FORK_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FORK_test.dir/build.make CMakeFiles/FORK_test.dir/build
+.PHONY : FORK_test/fast
+
+#=============================================================================
+# Target rules for targets named UDP_test
+
+# Build rule for target.
+UDP_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UDP_test
+.PHONY : UDP_test
+
+# fast build rule for target.
+UDP_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UDP_test.dir/build.make CMakeFiles/UDP_test.dir/build
+.PHONY : UDP_test/fast
+
+#=============================================================================
+# Target rules for targets named TCP_test
+
+# Build rule for target.
+TCP_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TCP_test
+.PHONY : TCP_test
+
+# fast build rule for target.
+TCP_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TCP_test.dir/build.make CMakeFiles/TCP_test.dir/build
+.PHONY : TCP_test/fast
+
+#=============================================================================
 # Target rules for targets named App
 
 # Build rule for target.
@@ -168,6 +207,19 @@ Content_test: cmake_check_build_system
 Content_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Content_test.dir/build.make CMakeFiles/Content_test.dir/build
 .PHONY : Content_test/fast
+
+#=============================================================================
+# Target rules for targets named PDU_test
+
+# Build rule for target.
+PDU_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PDU_test
+.PHONY : PDU_test
+
+# fast build rule for target.
+PDU_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PDU_test.dir/build.make CMakeFiles/PDU_test.dir/build
+.PHONY : PDU_test/fast
 
 main.o: main.c.o
 
@@ -250,6 +302,114 @@ tests/file_test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/File_test.dir/build.make CMakeFiles/File_test.dir/tests/file_test.c.s
 .PHONY : tests/file_test.c.s
 
+tests/fork_test.o: tests/fork_test.c.o
+
+.PHONY : tests/fork_test.o
+
+# target to build an object file
+tests/fork_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FORK_test.dir/build.make CMakeFiles/FORK_test.dir/tests/fork_test.c.o
+.PHONY : tests/fork_test.c.o
+
+tests/fork_test.i: tests/fork_test.c.i
+
+.PHONY : tests/fork_test.i
+
+# target to preprocess a source file
+tests/fork_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FORK_test.dir/build.make CMakeFiles/FORK_test.dir/tests/fork_test.c.i
+.PHONY : tests/fork_test.c.i
+
+tests/fork_test.s: tests/fork_test.c.s
+
+.PHONY : tests/fork_test.s
+
+# target to generate assembly for a file
+tests/fork_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FORK_test.dir/build.make CMakeFiles/FORK_test.dir/tests/fork_test.c.s
+.PHONY : tests/fork_test.c.s
+
+tests/pdu_test.o: tests/pdu_test.c.o
+
+.PHONY : tests/pdu_test.o
+
+# target to build an object file
+tests/pdu_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PDU_test.dir/build.make CMakeFiles/PDU_test.dir/tests/pdu_test.c.o
+.PHONY : tests/pdu_test.c.o
+
+tests/pdu_test.i: tests/pdu_test.c.i
+
+.PHONY : tests/pdu_test.i
+
+# target to preprocess a source file
+tests/pdu_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PDU_test.dir/build.make CMakeFiles/PDU_test.dir/tests/pdu_test.c.i
+.PHONY : tests/pdu_test.c.i
+
+tests/pdu_test.s: tests/pdu_test.c.s
+
+.PHONY : tests/pdu_test.s
+
+# target to generate assembly for a file
+tests/pdu_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PDU_test.dir/build.make CMakeFiles/PDU_test.dir/tests/pdu_test.c.s
+.PHONY : tests/pdu_test.c.s
+
+tests/tcp_test.o: tests/tcp_test.c.o
+
+.PHONY : tests/tcp_test.o
+
+# target to build an object file
+tests/tcp_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TCP_test.dir/build.make CMakeFiles/TCP_test.dir/tests/tcp_test.c.o
+.PHONY : tests/tcp_test.c.o
+
+tests/tcp_test.i: tests/tcp_test.c.i
+
+.PHONY : tests/tcp_test.i
+
+# target to preprocess a source file
+tests/tcp_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TCP_test.dir/build.make CMakeFiles/TCP_test.dir/tests/tcp_test.c.i
+.PHONY : tests/tcp_test.c.i
+
+tests/tcp_test.s: tests/tcp_test.c.s
+
+.PHONY : tests/tcp_test.s
+
+# target to generate assembly for a file
+tests/tcp_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TCP_test.dir/build.make CMakeFiles/TCP_test.dir/tests/tcp_test.c.s
+.PHONY : tests/tcp_test.c.s
+
+tests/udp_test.o: tests/udp_test.c.o
+
+.PHONY : tests/udp_test.o
+
+# target to build an object file
+tests/udp_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UDP_test.dir/build.make CMakeFiles/UDP_test.dir/tests/udp_test.c.o
+.PHONY : tests/udp_test.c.o
+
+tests/udp_test.i: tests/udp_test.c.i
+
+.PHONY : tests/udp_test.i
+
+# target to preprocess a source file
+tests/udp_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UDP_test.dir/build.make CMakeFiles/UDP_test.dir/tests/udp_test.c.i
+.PHONY : tests/udp_test.c.i
+
+tests/udp_test.s: tests/udp_test.c.s
+
+.PHONY : tests/udp_test.s
+
+# target to generate assembly for a file
+tests/udp_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UDP_test.dir/build.make CMakeFiles/UDP_test.dir/tests/udp_test.c.s
+.PHONY : tests/udp_test.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,7 +420,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... App"
 	@echo "... Content_test"
+	@echo "... FORK_test"
 	@echo "... File_test"
+	@echo "... PDU_test"
+	@echo "... TCP_test"
+	@echo "... UDP_test"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -270,6 +434,18 @@ help:
 	@echo "... tests/file_test.o"
 	@echo "... tests/file_test.i"
 	@echo "... tests/file_test.s"
+	@echo "... tests/fork_test.o"
+	@echo "... tests/fork_test.i"
+	@echo "... tests/fork_test.s"
+	@echo "... tests/pdu_test.o"
+	@echo "... tests/pdu_test.i"
+	@echo "... tests/pdu_test.s"
+	@echo "... tests/tcp_test.o"
+	@echo "... tests/tcp_test.i"
+	@echo "... tests/tcp_test.s"
+	@echo "... tests/udp_test.o"
+	@echo "... tests/udp_test.i"
+	@echo "... tests/udp_test.s"
 .PHONY : help
 
 

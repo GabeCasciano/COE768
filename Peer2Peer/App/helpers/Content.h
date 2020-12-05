@@ -24,7 +24,7 @@ struct content_t init_content(int port, char * addr){
     struct content_t content;
 
     content.port = port;
-    content.addr = (char *)malloc(sizeof(addr));
+    content.addr = (char *)malloc(20);
     strcpy(content.addr, addr);
     content.num_files = 0;
 
@@ -67,5 +67,29 @@ int remove_content(struct content_t * content, char * filename){
     }
     return -1;
 }
+
+
+
+int find_server_with_file(struct content_t * content, int len, char * filename){
+    for(int i = 0; i < len; i++){
+        if(content[i].num_files != 0) {
+            if(contains_content(&content[i], filename) > 0)
+                return i;
+        }
+    }
+    return -1;
+}
+
+int find_server_with_addr(struct content_t * content, int len, char * addr){
+    for(int i = 0; i < len; i++){
+        if(content->addr != NULL) {
+            if (strcmp(content->addr, addr) == 0) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+
 
 #endif //PEER2PEER_CONTENT_H

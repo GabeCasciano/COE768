@@ -48,7 +48,11 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/FORK_test.dir/DependInfo.cmake"
+  "CMakeFiles/UDP_test.dir/DependInfo.cmake"
+  "CMakeFiles/TCP_test.dir/DependInfo.cmake"
   "CMakeFiles/App.dir/DependInfo.cmake"
   "CMakeFiles/File_test.dir/DependInfo.cmake"
   "CMakeFiles/Content_test.dir/DependInfo.cmake"
+  "CMakeFiles/PDU_test.dir/DependInfo.cmake"
   )
