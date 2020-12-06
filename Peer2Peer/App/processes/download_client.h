@@ -183,7 +183,7 @@ void * download_client(){
             printf("    - H -> help window\n");
             printf("    - S -> search command, enter a file to be\nsearched for on the index sever\n");
             printf("    - D -> download command, enter a file to be\ndownloaded from a download server\n");
-            printf("    - L -> list command, request a list of files from the index server\n");
+            printf("    - L -> list command, request a list of files from the index server\n\n\n");
         }
 
         input_cmd = NULL;
