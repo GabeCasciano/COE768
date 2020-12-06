@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <math.h>
 
 #define PDU_ACK 'A'
 #define PDU_ERROR 'E'
@@ -103,7 +102,7 @@ char * serialized_data(char ** data, int size){
 
 struct packet_t init_packet(int packet_data_size, char * data, int data_length){
     struct packet_t packet;
-    packet.length = ceil(data_length/packet_data_size);
+    packet.length = (data_length/packet_data_size) + (data_length % packet_data_size != 0);
     packet.pdus = (struct pdu_t *)malloc(packet.length);
 
     int data_cursor = 0;

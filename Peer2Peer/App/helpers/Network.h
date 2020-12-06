@@ -34,6 +34,7 @@ struct sock_t init_tcp_client(int port, char * host){
 
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
     sock.addr = (char *)malloc(20);
+    sock.addr = "";
 
     if((sock.sockfd = socket(AF_INET, SOCK_STREAM, 0)) == 0){
         printf("Error 01: could not create socket \n");
@@ -67,6 +68,10 @@ struct sock_t init_tcp_client(int port, char * host){
 struct sock_t init_server_tcp(int port, int listen_size){
 
     struct sock_t sock;
+
+    bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
+    sock.addr = (char *)malloc(20);
+    sock.addr = "";
 
     if((sock.sockfd = socket(AF_INET, SOCK_STREAM, 0)) == 0){
         printf("Error 01: failed to create sock \n");
@@ -107,8 +112,10 @@ struct sock_t init_client_udp(int port, char * host){
     tv.tv_sec = 1;
 
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
-
     sock.sockaddr_len = sizeof(sock.sockaddr);
+
+    sock.addr = (char *)malloc(20);
+    sock.addr = "";
 
     sock.sockaddr.sin_family = AF_INET;
     sock.sockaddr.sin_port = htons(port);
@@ -116,10 +123,16 @@ struct sock_t init_client_udp(int port, char * host){
 
     sock.sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
+//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
+//        printf("Error 06: failed to reuse addr");
+//
+//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEPORT, &(int){1}, sizeof(int)) < 0)
+//        printf("Error 07: failed to reuse port");
+
 //    if(setsockopt(sock.sockfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0)
 //        printf("Error 08: could not set timeout");
 
-    connect(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
+    //connect(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
 
     return sock;
 }
@@ -128,18 +141,36 @@ struct sock_t init_server_udp(int port){
     struct sock_t sock;
 
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
-
-    sock.sockaddr_len = sizeof(sock.sockaddr);
+    sock.addr = (char *)malloc(20);
+    sock.addr = "";
 
     sock.sockaddr.sin_family = AF_INET;
     sock.sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     sock.sockaddr.sin_port = htons(port);
 
     sock.sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    bind(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
 
+//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
+//        printf("Error 06: failed to reuse addr");
+//
+//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEPORT, &(int){1}, sizeof(int)) < 0)
+//        printf("Error 07: failed to reuse port");
+
+    bind(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sizeof(sock.sockaddr));
     return sock;
 
+}
+
+struct sock_t init_udp_server_cli(){
+    struct sock_t sock;
+    bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
+
+    sock.addr = (char *)malloc(20);
+    sock.addr = "";
+
+    sock.sockaddr_len = sizeof(sock.sockaddr);
+
+    return sock;
 }
 
 #endif //PEER2PEER_NETWORK_H

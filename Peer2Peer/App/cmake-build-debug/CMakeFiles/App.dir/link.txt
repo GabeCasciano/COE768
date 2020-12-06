@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/App.dir/main.c.o  -o App 
+/usr/bin/cc -g   CMakeFiles/App.dir/main.c.o  -o App  -pthread 

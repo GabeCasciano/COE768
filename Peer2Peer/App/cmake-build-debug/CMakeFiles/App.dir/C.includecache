@@ -73,12 +73,12 @@ unistd.h
 -
 string.h
 -
-math.h
--
 
 /home/gabe/Documents/School/COE768/Peer2Peer/App/main.c
 common.h
 /home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+pthread.h
+-
 
 /home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_client.h
 ctype.h

@@ -461,3 +461,17 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b632e/fast && /usr/bin/make  -f CMakeFiles/cmTC_b632e.dir/build.make CMakeFiles/cmTC_b632e.dir/build
+make[1]: Entering directory '/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b632e.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_b632e.dir/CheckIncludeFile.c.o   -c /home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b632e
+/home/gabe/ProgramScripts/clion-2020.3/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b632e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_b632e.dir/CheckIncludeFile.c.o  -o cmTC_b632e 
+make[1]: Leaving directory '/home/gabe/Documents/School/COE768/Peer2Peer/App/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+

@@ -24,9 +24,9 @@ void searching(struct sock_t * sock){
     bzero(buff, MAX_MSG_SIZE);
     serialized(pdu, buff);
 
-    write(sock->sockfd, buff, MAX_MSG_SIZE);
+    sendto(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, sock->sockaddr_len);
     bzero(buff, MAX_MSG_SIZE);
-    read(sock->sockfd, buff, MAX_MSG_SIZE);
+    recvfrom(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, &sock->sockaddr_len);
     unserialized(buff, &pdu);
 
     char ** datas = unserialized_data(pdu.data);
@@ -60,6 +60,7 @@ void downloading_pt2(char * filename, char * addr,  int port){
     if(pdu.type == PDU_CONTENT) {
         num_packs = atoi(pdu.data);
         file = (char *)malloc(MAX_MSG_SIZE * num_packs);
+        bzero(file, MAX_MSG_SIZE * num_packs);
 
         pdu = init_pdu(PDU_ACK, " ");
         bzero(buff, MAX_MSG_SIZE);
@@ -97,14 +98,14 @@ void downloading_pt1(struct sock_t * sock){
     bzero(buff, MAX_MSG_SIZE);
     serialized(pdu, buff);
 
-    write(sock->sockfd, buff, MAX_MSG_SIZE);
+    sendto(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, sock->sockaddr_len);
     bzero(buff, MAX_MSG_SIZE);
-    read(sock->sockfd, buff, MAX_MSG_SIZE);
+    recvfrom(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, &sock->sockaddr_len);
     unserialized(buff, &pdu);
 
-    char ** datas = unserialized_data(buff);
+    char ** datas = unserialized_data(pdu.data);
 
-    if(pdu.type == PDU_SEARCH){
+    if(pdu.type == PDU_REQUEST){
         printf("Server has file: %s, on download server %s at port %d\n", datas[0], datas[2], atoi(datas[1]));
         printf("Beginning download\n");
         downloading_pt2(datas[0], datas[2], atoi(datas[1]));
@@ -118,18 +119,44 @@ void downloading_pt1(struct sock_t * sock){
 
 
 void listing(struct sock_t * sock){
+    char * buff = (char *)malloc(MAX_MSG_SIZE);
+    char ** datas = (char *)malloc(3);
+    int num_files = 0;
+
+    struct pdu_t pdu = init_pdu(PDU_LIST, " ");
+    bzero(buff, MAX_MSG_SIZE);
+    serialized(pdu, buff);
+
+    sendto(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, sock->sockaddr_len);
+    bzero(buff, MAX_MSG_SIZE);
+    recvfrom(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, &sock->sockaddr_len);
+    unserialized(buff, &pdu);
+
+    if(pdu.type == PDU_LIST){
+        num_files = atoi(pdu.data);
+        printf("File List: \n");
+        for(int i = 0; i < num_files; i++){
+            bzero(buff, MAX_MSG_SIZE);
+            recvfrom(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, &sock->sockaddr_len);
+            unserialized(buff, &pdu);
+            datas = unserialized_data(pdu.data);
+            printf("File %d; %s, from %s, %d\n", i, datas[0], datas[2], atoi(datas[1]));
+        }
+
+    }
+
 
 }
 
 
-void download_client(){
+void download_client(int * run){
     struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
     struct pdu_t pdu = init_pdu(PDU_ACK, " ");
 
-    int running = 1;
+    int * running = run;
+    while (*running == 0);// wait until registration is completed
 
-
-    while (running){
+    while (*running){
         char input_cmd;
 
         printf("Enter a command:\n");
@@ -149,7 +176,7 @@ void download_client(){
         }
         else if(input_cmd == CMD_EXIT){
             printf("Exiting...\n");
-            running = 0;
+            *running = 0;
             close(sock.sockfd);
         }
         else{ // help

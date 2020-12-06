@@ -3,6 +3,7 @@
 //
 
 #include "common.h"
+#include <pthread.h>
 
 #define STRT_CMD_SERV   "-s"
 #define STRT_CMD_CLI    "-c"
@@ -18,11 +19,15 @@ int main(int argc, char * argv[]){
         }
         else if(strcmp(argv[1], STRT_CMD_CLI)==0){
             // start the d client
-            download_client();
-        }
-        else if(strcmp(argv[1], STRT_CMD_DSERV)==0){
-            // start the d server
-            download_server();
+            int running = 0;
+            pthread_t server;
+
+            pthread_create(&server, NULL, download_server, (void *)&running);
+            download_client(&running);
+
+            pthread_join(server, NULL);
+
+            printf("goodbye");
         }
     }
 

@@ -21,7 +21,7 @@ void do_register(struct pdu_t pdu, char * addr){
     if(data[0] != NULL && data[1] != NULL) {
         if (index == -1) {
             if(content_counter < CONTENT_LIST_LEN) {
-                content[content_counter] = init_content(data[1], addr);
+                content[content_counter] = init_content(atoi(data[1]), addr);
                 add_content(&content[content_counter], data[0]);
 
                 content_counter++;
@@ -105,12 +105,11 @@ void do_request(struct pdu_t pdu, struct sock_t * server, struct sock_t * client
 
         strcpy(datas[0], pdu.data);
         sprintf(datas[1], "%d", DOWNLOAD_PORT);
-        strcpy(datas[2], client->addr);
+        strcpy(datas[2], content[index].addr);
 
         bzero(buff, MAX_MSG_SIZE);
         buff = serialized_data(datas, 3);
         send_pdu = init_pdu(PDU_REQUEST, buff);
-        bzero(buff, MAX_MSG_SIZE);
         serialized(send_pdu, buff);
     }
     else{
@@ -134,7 +133,8 @@ void do_list(struct sock_t * server, struct sock_t * client){
     for(int i = 0; i < content_counter; i++)
         pdu_to_send += content[i].num_files;
 
-    struct pdu_t send_pdu = init_pdu(PDU_LIST, pdu_to_send + '0');
+    sprintf(buff, "%d", pdu_to_send);
+    struct pdu_t send_pdu = init_pdu(PDU_LIST, buff);
     bzero(buff, MAX_MSG_SIZE);
     serialized(send_pdu, buff);
     sendto(server->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&client->sockaddr, client->sockaddr_len);
@@ -154,7 +154,6 @@ void do_list(struct sock_t * server, struct sock_t * client){
             bzero(buff, MAX_MSG_SIZE);
             buff = serialized_data(datas, 3);
             send_pdu = init_pdu(PDU_LIST, buff);
-            bzero(buff, MAX_MSG_SIZE);
             serialized(send_pdu, buff);
 
             sendto(server->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&client->sockaddr, client->sockaddr_len);
@@ -170,7 +169,7 @@ void do_list(struct sock_t * server, struct sock_t * client){
 
 void index_server(){
     struct sock_t server = init_server_udp(INDEX_PORT);
-    struct sock_t client;
+
 
     int running = 1;
 
@@ -179,9 +178,12 @@ void index_server(){
     struct pdu_t send_pdu = init_pdu(PDU_ACK, " ");
 
     while(running){
+        struct sock_t client = init_udp_server_cli();
         recvfrom(server.sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&client.sockaddr, &client.sockaddr_len);
         unserialized(buff, &recv_pdu);
         client.addr = inet_ntoa(client.sockaddr.sin_addr);
+
+        // socket is dying around here somewhere
 
         if(recv_pdu.type == PDU_REGISTER){
             do_register(recv_pdu, client.addr);
@@ -202,6 +204,7 @@ void index_server(){
             if (recv_pdu.data == ERR_EXIT)
                 running = 0;
         }
+        bzero(buff, MAX_MSG_SIZE);
     }
 
 }
