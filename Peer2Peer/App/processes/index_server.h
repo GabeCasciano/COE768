@@ -75,7 +75,8 @@ void do_search(struct pdu_t pdu, struct sock_t * server, struct sock_t * client)
         serialized(send_pdu, buff);
     }
     else{
-        send_pdu = init_pdu(PDU_ERROR, ERR_NOFILE + '0');
+        sprintf(buff, "%d", ERR_NOFILE);
+        send_pdu = init_pdu(PDU_ERROR, buff);
         bzero(buff, MAX_MSG_SIZE);
         serialized(send_pdu, buff);
     }
@@ -113,7 +114,8 @@ void do_request(struct pdu_t pdu, struct sock_t * server, struct sock_t * client
         serialized(send_pdu, buff);
     }
     else{
-        send_pdu = init_pdu(PDU_ERROR, ERR_NOFILE + '0');
+        sprintf(buff, "%d", ERR_NOFILE);
+        send_pdu = init_pdu(PDU_ERROR, buff);
         bzero(buff, MAX_MSG_SIZE);
         serialized(send_pdu, buff);
     }
@@ -130,12 +132,13 @@ void do_list(struct sock_t * server, struct sock_t * client){
     int pdu_to_send = 0;
     char * buff = (char *)malloc(MAX_MSG_SIZE);
 
+    bzero(buff, MAX_MSG_SIZE);
+
     for(int i = 0; i < content_counter; i++)
         pdu_to_send += content[i].num_files;
 
     sprintf(buff, "%d", pdu_to_send);
     struct pdu_t send_pdu = init_pdu(PDU_LIST, buff);
-    bzero(buff, MAX_MSG_SIZE);
     serialized(send_pdu, buff);
     sendto(server->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&client->sockaddr, client->sockaddr_len);
 
@@ -175,7 +178,6 @@ void index_server(){
 
     char * buff = (char *)malloc(MAX_MSG_SIZE);
     struct pdu_t recv_pdu = init_pdu(PDU_ACK, " ");
-    struct pdu_t send_pdu = init_pdu(PDU_ACK, " ");
 
     while(running){
         struct sock_t client = init_udp_server_cli();

@@ -6,7 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Content.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+helpers/Network.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Network.h
+helpers/Files.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Files.h
+helpers/PDUs.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/PDUs.h
+helpers/Content.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Content.h
+processes/index_server.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/index_server.h
+processes/download_client.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_client.h
+processes/download_server.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_server.h
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Content.h
 stdio.h
 -
 stdlib.h
@@ -16,7 +32,7 @@ unistd.h
 string.h
 -
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Files.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Files.h
 stdio.h
 -
 stdlib.h
@@ -30,7 +46,7 @@ sys/stat.h
 dirent.h
 -
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Network.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/Network.h
 stdio.h
 -
 stdlib.h
@@ -47,8 +63,10 @@ arpa/inet.h
 -
 netdb.h
 -
+fcntl.h
+-
 
-/home/gabe/Documents/School/COE768/Peer2Peer/App/PDUs.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/PDUs.h
 stdio.h
 -
 stdlib.h
@@ -57,18 +75,20 @@ unistd.h
 -
 string.h
 -
-math.h
--
 
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_client.h
+ctype.h
+-
+../common.h
 /home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
-Network.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Network.h
-Files.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Files.h
-PDUs.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/PDUs.h
-Content.h
-/home/gabe/Documents/School/COE768/Peer2Peer/App/Content.h
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_server.h
+../common.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
+
+/home/gabe/Documents/School/COE768/Peer2Peer/App/processes/index_server.h
+../common.h
+/home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
 
 /home/gabe/Documents/School/COE768/Peer2Peer/App/tests/pdu_test.c
 ../common.h

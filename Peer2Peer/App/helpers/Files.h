@@ -94,9 +94,11 @@ int file_in_cwd(char * filename){
     struct cwd_t directory = read_cwd();
 
     for(int i = 0; i < directory.num_files; i++){
-        if(strcmp(directory.files[i], filename) == 0){
-            free(directory.files);
-            return i;
+        if(filename != NULL) {
+            if (strcmp(directory.files[i], filename) == 0) {
+                free(directory.files);
+                return i;
+            }
         }
     }
 

@@ -7,7 +7,8 @@
 
 #include "../common.h"
 
-void do_registration(struct sock_t * sock){
+void do_registration(){
+    struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
     char * buff = (char *)malloc(MAX_MSG_SIZE);
     struct pdu_t pdu;
 
@@ -26,7 +27,7 @@ void do_registration(struct sock_t * sock){
 
         pdu = init_pdu(PDU_REGISTER, buff);
         serialized(pdu, buff);
-        sendto(sock->sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock->sockaddr, sock->sockaddr_len);
+        sendto(sock.sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
         //write(sock->sockfd, buff, MAX_MSG_SIZE);
 
         datas = NULL;
@@ -36,7 +37,8 @@ void do_registration(struct sock_t * sock){
     printf("Completed registration\n");
 }
 
-void do_unregistration(struct sock_t * sock){
+void do_unregistration(){
+    struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
     char * buff = (char *)malloc(MAX_MSG_SIZE);
     struct pdu_t pdu;
 
@@ -54,7 +56,7 @@ void do_unregistration(struct sock_t * sock){
 
         pdu = init_pdu(PDU_DEREGISTER, buff);
         serialized(pdu, buff);
-        write(sock->sockfd, buff, MAX_MSG_SIZE);
+        sendto(sock.sockfd, buff, MAX_MSG_SIZE, 0, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
 
         datas = NULL;
         free(datas);
@@ -62,8 +64,8 @@ void do_unregistration(struct sock_t * sock){
     printf("Completed deregistration\n");
 }
 
-void do_file_transfer(){
-    struct sock_t server = init_server_tcp(DOWNLOAD_PORT, 1);
+void do_file_transfer(struct sock_t server){
+
     struct sock_t client;
     struct pdu_t pdu = init_pdu(PDU_ACK, " ");
 
@@ -75,7 +77,7 @@ void do_file_transfer(){
     read(client.sockfd, buff, MAX_MSG_SIZE);
     unserialized(buff, &pdu);
 
-    if(file_in_cwd(pdu.data) >= 0){
+    if(file_in_cwd(pdu.data) >= 0 && pdu.type == PDU_REQUEST){
         int size = filesize(pdu.data);
         file = (char *)malloc(size);
         read_file(pdu.data, file, size);
@@ -108,29 +110,28 @@ void do_file_transfer(){
     free(buff);
     free(file);
     close(client.sockfd);
-    close(server.sockfd);
 
 }
 
-void download_server(void * run){
-    struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
+void * download_server(){
+
+    struct sock_t server;
     char * buff = (char *)malloc(MAX_MSG_SIZE);
     struct pdu_t pdu = init_pdu(PDU_ACK, " ");
 
     printf("Starting download server \n");
-    int * running = (int *)run;
+    int running =1 ;
+    server = init_server_tcp(DOWNLOAD_PORT, 1);
 
-    do_registration(&sock);
-    *running = 1;
-    while (*running){
-        do_file_transfer();
+    while (running){
+        do_file_transfer(server);
     }
 
-    do_unregistration(&sock);
+    close(server.sockfd);
+
 
     buff = NULL;
     free(buff);
-    close(sock.sockfd);
 }
 
 #endif //APP_DOWNLOAD_SERVER_H

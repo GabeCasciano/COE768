@@ -13,6 +13,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <fcntl.h>
 
 #define INDEX_PORT 8123
 #define INDEX_ADDR "0.0.0.0"
@@ -68,13 +69,14 @@ struct sock_t init_tcp_client(int port, char * host){
 struct sock_t init_server_tcp(int port, int listen_size){
 
     struct sock_t sock;
-
+    struct timeval tv;
+    tv.tv_sec = 1;
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
     sock.addr = (char *)malloc(20);
     sock.addr = "";
 
     if((sock.sockfd = socket(AF_INET, SOCK_STREAM, 0)) == 0){
-        printf("Error 01: failed to create sock \n");
+        printf("Error 10: failed to create sock \n");
         sock.sockfd = -1;
         return sock;
     }
@@ -88,6 +90,12 @@ struct sock_t init_server_tcp(int port, int listen_size){
 
     if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEPORT, &(int){1}, sizeof(int)) < 0)
         printf("Error 07: failed to reuse port");
+
+//    if(fcntl(sock.sockfd, F_SETFL, fcntl(sock.sockfd, F_GETFL, 0) | O_NONBLOCK)){
+//        printf("Error 09: could not set non-blocking \n");
+//        sock.sockfd = -9;
+//        return sock;
+//    }
 
     if(bind(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sizeof(sock.sockaddr)) < 0){
         printf("Error 04: could not bind server \n");
@@ -108,8 +116,6 @@ struct sock_t init_server_tcp(int port, int listen_size){
 
 struct sock_t init_client_udp(int port, char * host){
     struct sock_t sock;
-    struct timeval tv;
-    tv.tv_sec = 1;
 
     bzero((char *)&sock.sockaddr, sizeof(sock.sockaddr));
     sock.sockaddr_len = sizeof(sock.sockaddr);
@@ -122,17 +128,6 @@ struct sock_t init_client_udp(int port, char * host){
     inet_aton(host, &sock.sockaddr.sin_addr);
 
     sock.sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-
-//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
-//        printf("Error 06: failed to reuse addr");
-//
-//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEPORT, &(int){1}, sizeof(int)) < 0)
-//        printf("Error 07: failed to reuse port");
-
-//    if(setsockopt(sock.sockfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0)
-//        printf("Error 08: could not set timeout");
-
-    //connect(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sock.sockaddr_len);
 
     return sock;
 }
@@ -149,12 +144,6 @@ struct sock_t init_server_udp(int port){
     sock.sockaddr.sin_port = htons(port);
 
     sock.sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-
-//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
-//        printf("Error 06: failed to reuse addr");
-//
-//    if (setsockopt(sock.sockfd, SOL_SOCKET, SO_REUSEPORT, &(int){1}, sizeof(int)) < 0)
-//        printf("Error 07: failed to reuse port");
 
     bind(sock.sockfd, (struct sockaddr *)&sock.sockaddr, sizeof(sock.sockaddr));
     return sock;

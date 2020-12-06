@@ -38,14 +38,13 @@ struct packet_t {
 };
 
 struct pdu_t init_pdu(const char type, char * data){
-    int data_length = MAX_DATA_LEN;
     struct pdu_t pdu;
 
     pdu.type = type;
+    pdu.data = (char *)malloc(MAX_DATA_LEN);
 
     if(data != NULL){
-        pdu.data = (char *)malloc(data_length);
-        strcpy(pdu.data, data);
+        strcpy(pdu.data, (char*)data);
     }
 
     return pdu;
@@ -62,23 +61,25 @@ char * serialized(struct pdu_t pdu, char * dest){
 struct pdu_t unserialized(char * cereal, struct pdu_t * pdu){
 
     pdu->type = cereal[0];
-    bzero(pdu->data, strlen(cereal));
-    strncpy(pdu->data, cereal+2, strlen(cereal));
+    bzero(pdu->data, MAX_DATA_LEN);
+    strncpy(pdu->data, cereal+2, MAX_DATA_LEN);
 
     return *pdu;
 }
 
 char ** unserialized_data(char * data){
     char ** datas = (char **)malloc(MAX_ELEMENTS_PER_DATA);
-    char * holder = strtok(data, ";");
-    for( int i = 0; i < MAX_ELEMENTS_PER_DATA; i++) {
-        if(holder != NULL) {
-            datas[i] = (char *) malloc(MAX_FILENAME_LEN);
-            strcpy(datas[i], holder);
-            holder = strtok(NULL, ";");
+
+    if(data != NULL) {
+        char *holder = strtok(data, ";");
+        for (int i = 0; i < MAX_ELEMENTS_PER_DATA; i++) {
+            if (holder != NULL) {
+                datas[i] = (char *) malloc(MAX_FILENAME_LEN);
+                strcpy(datas[i], holder);
+                holder = strtok(NULL, ";");
+            } else
+                break;
         }
-        else
-            break;
     }
     return datas;
 }

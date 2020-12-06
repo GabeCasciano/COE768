@@ -63,6 +63,8 @@ arpa/inet.h
 -
 netdb.h
 -
+fcntl.h
+-
 
 /home/gabe/Documents/School/COE768/Peer2Peer/App/helpers/PDUs.h
 stdio.h
@@ -78,6 +80,8 @@ string.h
 common.h
 /home/gabe/Documents/School/COE768/Peer2Peer/App/common.h
 pthread.h
+-
+signal.h
 -
 
 /home/gabe/Documents/School/COE768/Peer2Peer/App/processes/download_client.h

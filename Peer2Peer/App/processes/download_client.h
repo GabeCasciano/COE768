@@ -149,14 +149,13 @@ void listing(struct sock_t * sock){
 }
 
 
-void download_client(int * run){
+void * download_client(){
     struct sock_t sock = init_client_udp(INDEX_PORT, INDEX_ADDR);
     struct pdu_t pdu = init_pdu(PDU_ACK, " ");
 
-    int * running = run;
-    while (*running == 0);// wait until registration is completed
+    int running = 1;
 
-    while (*running){
+    while (running){
         char input_cmd;
 
         printf("Enter a command:\n");
@@ -176,7 +175,7 @@ void download_client(int * run){
         }
         else if(input_cmd == CMD_EXIT){
             printf("Exiting...\n");
-            *running = 0;
+            running = 0;
             close(sock.sockfd);
         }
         else{ // help
